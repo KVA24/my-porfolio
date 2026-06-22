@@ -102,23 +102,23 @@ export default function Projects({ onSelectProject }: ProjectsProps) {
         </div>
 
         {/* Testimonies inside the project frame to display feedback on products */}
-        <div className="mt-16 pt-12 border-t border-[#21262d]/70 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {TESTIMONIALS.map(tData => (
-            <div key={tData.id} className="p-6 rounded-xl border border-[#21262d] bg-[#161b22]/50 relative">
-              <QuoteIcon className="absolute top-4 right-4 h-8 w-8 text-[#21262d]" />
-              <p className="text-sm text-[#8b949e] italic leading-relaxed mb-6">{tData.text}</p>
-              <div className="flex items-center gap-4">
-                <div className="h-10 w-10 rounded-full overflow-hidden border border-[#30363d] bg-slate-800">
-                  <img src={tData.avatar} alt={tData.name} className="w-full h-full object-cover" />
-                </div>
-                <div>
-                  <h5 className="text-white font-bold text-xs">{tData.name}</h5>
-                  <p className="text-[10px] text-[#8b949e] mt-0.5">{tData.role} @ {tData.company}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/*<div className="mt-16 pt-12 border-t border-[#21262d]/70 grid grid-cols-1 md:grid-cols-2 gap-6">*/}
+        {/*  {TESTIMONIALS.map(tData => (*/}
+        {/*    <div key={tData.id} className="p-6 rounded-xl border border-[#21262d] bg-[#161b22]/50 relative">*/}
+        {/*      <QuoteIcon className="absolute top-4 right-4 h-8 w-8 text-[#21262d]" />*/}
+        {/*      <p className="text-sm text-[#8b949e] italic leading-relaxed mb-6">{tData.text}</p>*/}
+        {/*      <div className="flex items-center gap-4">*/}
+        {/*        <div className="h-10 w-10 rounded-full overflow-hidden border border-[#30363d] bg-slate-800">*/}
+        {/*          <img src={tData.avatar} alt={tData.name} className="w-full h-full object-cover" />*/}
+        {/*        </div>*/}
+        {/*        <div>*/}
+        {/*          <h5 className="text-white font-bold text-xs">{tData.name}</h5>*/}
+        {/*          <p className="text-[10px] text-[#8b949e] mt-0.5">{tData.role} @ {tData.company}</p>*/}
+        {/*        </div>*/}
+        {/*      </div>*/}
+        {/*    </div>*/}
+        {/*  ))}*/}
+        {/*</div>*/}
       </div>
     </section>
   );

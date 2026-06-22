@@ -7,7 +7,11 @@
     "contact": "Contact"
   },
   "resume": {
-    "button": "Resume"
+    "button": "Resume",
+    "title": "KHIEN NGUYEN'S PORTFOLIO RESUME",
+    "subtitle": "PROFESSIONAL CURRICULUM VITAE",
+    "download": "Download PDF Resume",
+    "close": "Close"
   },
   "hero": {
     "ready": "Ready for new projects",
@@ -76,11 +80,5 @@
       "empty": "No enquiries submitted during this local session yet.",
       "count": "enquiries"
     }
-  },
-  "resume": {
-    "title": "KHIEN NGUYEN'S PORTFOLIO RESUME",
-    "subtitle": "PROFESSIONAL CURRICULUM VITAE",
-    "download": "Download PDF Resume",
-    "close": "Close"
   }
 }

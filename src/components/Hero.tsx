@@ -10,9 +10,9 @@ import { useTranslation } from 'react-i18next';
 const CODE_TAB_CONTENT = {
   profile: `// portfolio.ts
 const developer = {
-  fullName: "Nguyen Anh Tu",
+  fullName: "Nguyen Thanh Khien",
   title: "Senior React Architect",
-  experienceYears: 5,
+  experienceYears: 3,
   location: "Hanoi, Vietnam",
   coreFocus: [
     "High-Performance Rendering",
@@ -125,7 +125,7 @@ export default function Hero() {
             </div>
             <div className="flex items-center gap-2 text-xs text-[#8b949e] font-mono">
               <Terminal size={12} className="text-cyan-400" />
-              <span>anhtu@dev-lab: ~</span>
+              <span>khiennguyen@dev-lab: ~</span>
             </div>
           </div>
 

@@ -7,7 +7,11 @@
     "contact": "Liên hệ"
   },
   "resume": {
-    "button": "Tải Hồ Sơ"
+    "button": "Tải Hồ Sơ",
+    "title": "HỒ SƠ CỦA Khiên Nguyễn",
+    "subtitle": "SƠ YẾU LÝ LỊCH CHUYÊN NGHIỆP",
+    "download": "Tải PDF Bản Tóm Tắt",
+    "close": "Đóng"
   },
   "hero": {
     "ready": "Sẵn sàng cho dự án mới",
@@ -76,11 +80,5 @@
       "empty": "Chưa có yêu cầu nào được gửi trong phiên này.",
       "count": "yêu cầu"
     }
-  },
-  "resume": {
-    "title": "HỒ SƠ CỦA Khiên Nguyễn",
-    "subtitle": "SƠ YẾU LÝ LỊCH CHUYÊN NGHIỆP",
-    "download": "Tải PDF Bản Tóm Tắt",
-    "close": "Đóng"
   }
 }

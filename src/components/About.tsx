@@ -73,7 +73,7 @@ export default function About() {
             <p className="text-slate-300 italic text-sm">
               &ldquo;Architecture isn&apos;t just about drawing lines in a spreadsheet; it&apos;s about shipping component rendering trees that run at 60 FPS on lower-tier mobile hardware.&rdquo;
             </p>
-            <p className="text-xs text-[#8b949e] font-mono mt-2">- Anh Tu, DevPortfolio Principle</p>
+            <p className="text-xs text-[#8b949e] font-mono mt-2">- Thanh Khien, DevPortfolio Principle</p>
           </div>
         </div>
       </div>
