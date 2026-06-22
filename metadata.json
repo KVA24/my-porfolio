@@ -1,0 +1,6 @@
+{
+  "name": "DevPortfolio",
+  "description": "Ứng dụng Portfolio chuyên nghiệp dành cho React Developer Khiên Nguyễn, được tối ưu hóa hiệu năng và thiết kế tinh tế.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
