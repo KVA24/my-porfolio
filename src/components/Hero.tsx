@@ -5,11 +5,7 @@
 
 import { useState } from 'react';
 import { ArrowDown, Terminal } from 'lucide-react';
-import { TRANSLATIONS } from '../data';
-
-interface HeroProps {
-  t: typeof TRANSLATIONS.VN;
-}
+import { useTranslation } from 'react-i18next';
 
 const CODE_TAB_CONTENT = {
   profile: `// portfolio.ts
@@ -56,7 +52,8 @@ export const FastListCount = memo(({ items }) => {
 }`
 };
 
-export default function Hero({ t }: HeroProps) {
+export default function Hero() {
+  const { t } = useTranslation();
   const [activeCodeTab, setActiveCodeTab] = useState<'profile' | 'performance' | 'tailwind'>('profile');
 
   return (
@@ -68,33 +65,33 @@ export default function Hero({ t }: HeroProps) {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
-          {t.heroReady}
+          {t('hero.ready')}
         </div>
 
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-          {t.heroTitle}{' '}
+          {t('hero.title')}{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-400 block sm:inline mt-1.5 sm:mt-0">
-            {t.heroTitleHighlight}
+            {t('hero.titleHighlight')}
           </span>
         </h1>
 
         <p className="text-[#8b949e] text-base sm:text-lg leading-relaxed max-w-2xl">
-          {t.heroSubtitle}
+          {t('hero.subtitle')}
         </p>
 
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-4">
-          <a 
-            href="#projects" 
+          <a
+            href="#projects"
             className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-[#0d1117] font-semibold rounded-lg shadow-lg hover:shadow-cyan-500/20 text-sm text-center flex items-center justify-center gap-2 transition-all cursor-pointer"
           >
-            <span>{t.heroViewProjects}</span>
+            <span>{t('hero.viewProjects')}</span>
             <ArrowDown size={15} className="animate-bounce" />
           </a>
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             className="px-6 py-3 bg-[#161b22] hover:bg-[#1f2937] text-white font-semibold rounded-lg border border-[#30363d] text-sm text-center transition-all cursor-pointer"
           >
-            {t.heroContactNow}
+            {t('hero.contactNow')}
           </a>
         </div>
 
@@ -102,7 +99,7 @@ export default function Hero({ t }: HeroProps) {
         <div className="grid grid-cols-3 gap-6 sm:gap-12 pt-8 border-t border-[#21262d]/70 w-full max-w-md">
           <div>
             <div className="text-2xl sm:text-3xl font-extrabold text-white">3+</div>
-            <div className="text-xs text-[#8b949e] mt-1 uppercase tracking-wider font-medium">{t.aboutExpYear}</div>
+            <div className="text-xs text-[#8b949e] mt-1 uppercase tracking-wider font-medium">{t('about.expYear')}</div>
           </div>
           <div>
             <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400">10+</div>
@@ -134,33 +131,33 @@ export default function Hero({ t }: HeroProps) {
 
           {/* Tab Selectors */}
           <div className="bg-[#0f141c] flex border-b border-[#21262d] text-xs font-mono">
-            <button 
+            <button
               onClick={() => setActiveCodeTab('profile')}
               className={`px-4 py-2.5 transition-colors border-r border-[#21262d] flex items-center gap-1.5 cursor-pointer ${
-                activeCodeTab === 'profile' 
-                  ? 'bg-[#161b22] text-cyan-400 border-t-2 border-t-cyan-500' 
+                activeCodeTab === 'profile'
+                  ? 'bg-[#161b22] text-cyan-400 border-t-2 border-t-cyan-500'
                   : 'text-[#8b949e] hover:bg-[#161b22]/50 hover:text-white'
               }`}
             >
               <div className="w-2 h-2 rounded bg-yellow-500" />
               portfolio.ts
             </button>
-            <button 
+            <button
               onClick={() => setActiveCodeTab('performance')}
               className={`px-4 py-2.5 transition-colors border-r border-[#21262d] flex items-center gap-1.5 cursor-pointer ${
-                activeCodeTab === 'performance' 
-                  ? 'bg-[#161b22] text-cyan-400 border-t-2 border-t-cyan-500' 
+                activeCodeTab === 'performance'
+                  ? 'bg-[#161b22] text-cyan-400 border-t-2 border-t-cyan-500'
                   : 'text-[#8b949e] hover:bg-[#161b22]/50 hover:text-white'
               }`}
             >
               <div className="w-2 h-2 rounded bg-cyan-400" />
               performance.tsx
             </button>
-            <button 
+            <button
               onClick={() => setActiveCodeTab('tailwind')}
               className={`px-4 py-2.5 transition-colors flex items-center gap-1.5 cursor-pointer ${
-                activeCodeTab === 'tailwind' 
-                  ? 'bg-[#161b22] text-cyan-400 border-t-2 border-t-cyan-500' 
+                activeCodeTab === 'tailwind'
+                  ? 'bg-[#161b22] text-cyan-400 border-t-2 border-t-cyan-500'
                   : 'text-[#8b949e] hover:bg-[#161b22]/50 hover:text-white'
               }`}
             >

@@ -6,21 +6,21 @@
 import { Settings, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Project } from '../types';
-import { TRANSLATIONS } from '../data';
+import { useTranslation } from 'react-i18next';
 
 interface ProjectDetailModalProps {
-  t: typeof TRANSLATIONS.VN;
   project: Project | null;
   onClose: () => void;
 }
 
-export default function ProjectDetailModal({ t, project, onClose }: ProjectDetailModalProps) {
+export default function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
+  const { t } = useTranslation();
   return (
     <AnimatePresence>
       {project && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -29,7 +29,7 @@ export default function ProjectDetailModal({ t, project, onClose }: ProjectDetai
           />
 
           {/* Modal Body */}
-          <motion.div 
+          <motion.div
             initial={{ scale: 0.95, y: 20, opacity: 0 }}
             animate={{ scale: 1, y: 0, opacity: 1 }}
             exit={{ scale: 0.95, y: 20, opacity: 0 }}
@@ -41,7 +41,7 @@ export default function ProjectDetailModal({ t, project, onClose }: ProjectDetai
                 <Settings size={16} className="text-cyan-400 rotate-45" />
                 <span className="text-xs font-mono text-cyan-400 font-bold uppercase tracking-widest">Architectural Spec</span>
               </div>
-              <button 
+              <button
                 onClick={onClose}
                 className="p-1 rounded-lg hover:bg-[#21262d] text-[#8b949e] hover:text-white cursor-pointer"
               >
@@ -60,19 +60,19 @@ export default function ProjectDetailModal({ t, project, onClose }: ProjectDetai
 
               {/* Challenge description */}
               <div className="space-y-1.5 pt-2">
-                <h4 className="text-white font-extrabold text-xs uppercase tracking-wider text-cyan-400">{t.projectChallenge}</h4>
+                <h4 className="text-white font-extrabold text-xs uppercase tracking-wider text-cyan-400">{t('projects.challenge')}</h4>
                 <p className="text-slate-300 leading-relaxed text-xs">{project.details.challenge}</p>
               </div>
 
               {/* Technical Solution */}
               <div className="space-y-1.5">
-                <h4 className="text-white font-extrabold text-xs uppercase tracking-wider text-emerald-400">{t.projectSolution}</h4>
+                <h4 className="text-white font-extrabold text-xs uppercase tracking-wider text-emerald-400">{t('projects.solution')}</h4>
                 <p className="text-slate-300 leading-relaxed text-xs">{project.details.solution}</p>
               </div>
 
               {/* Core metrics visual grid */}
               <div className="space-y-2">
-                <h4 className="text-white font-extrabold text-xs uppercase tracking-wider text-[#58a6ff]">{t.projectMetrics}</h4>
+                <h4 className="text-white font-extrabold text-xs uppercase tracking-wider text-[#58a6ff]">{t('projects.metrics')}</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {project.details.metrics.map((metric, index) => (
                     <div key={index} className="p-3 rounded-lg bg-[#0d1117] border border-[#21262d] text-xs text-white font-semibold flex items-start gap-2">
@@ -85,7 +85,7 @@ export default function ProjectDetailModal({ t, project, onClose }: ProjectDetai
 
               {/* Architecture stack visual boxes */}
               <div className="space-y-2">
-                <h4 className="text-white font-extrabold text-xs uppercase tracking-wider text-purple-400">{t.projectArchitecture}</h4>
+                <h4 className="text-white font-extrabold text-xs uppercase tracking-wider text-purple-400">{t('projects.architecture')}</h4>
                 <div className="bg-[#090d13] p-4 rounded-lg border border-[#21262d] space-y-3 font-mono text-xs text-[#8b949e]">
                   {project.details.architecture.map((archLine, idx) => (
                     <div key={idx} className="flex gap-2.5 items-start">
@@ -99,11 +99,11 @@ export default function ProjectDetailModal({ t, project, onClose }: ProjectDetai
 
             {/* Action Buttons inside specs */}
             <div className="p-4 bg-[#0d1117] border-t border-[#21262d] flex justify-end gap-3">
-              <button 
+              <button
                 onClick={onClose}
                 className="bg-[#21262d] hover:bg-[#30363d] text-white py-1.5 px-4 rounded-lg font-bold text-xs border border-[#30363d] cursor-pointer"
               >
-                {t.projectCloseBtn}
+                {t('projects.closeBtn')}
               </button>
             </div>
           </motion.div>

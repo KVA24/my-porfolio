@@ -1,0 +1,86 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "resume": {
+    "button": "Resume"
+  },
+  "hero": {
+    "ready": "Ready for new projects",
+    "title": "Engineered for exceptional",
+    "titleHighlight": "Digital Experiences",
+    "subtitle": "I am Khiên Nguyễn, a React Developer specializing in frontend UX optimization and scalable application architecture. Merging clean aesthetic logic with stringent technical standards.",
+    "viewProjects": "Explore My Work",
+    "contactNow": "Let's Connect"
+  },
+  "about": {
+    "title": "Professional Journey",
+    "subtitle": "ABOUT ME",
+    "description": "I am a software engineer focused on building highly responsive and performant frontend architectures using the React ecosystem. Treating code as high-level engineering art, I specialize in fine-tuning every web vital, slashing render latency, and structuring modular codebases ready for enterprise scale.",
+    "expYear": "Years of Experience",
+    "coreTech": {
+      "title": "Technical Excellence",
+      "desc": "Obsessive optimization of Core Web Vitals (LCP/FID/CLS). Fluent in Micro-frontends, Server-side Rendering, and state management at scale."
+    },
+    "mindset": {
+      "title": "Product-driven Mindset",
+      "desc": "Approaching UI from a user experience lens. Translating complex commercial requirements into frictionless, intuitive digital interfaces."
+    }
+  },
+  "skills": {
+    "title": "Expertise Taxonomy",
+    "subtitle": "CORE CAPABILITIES",
+    "clickHint": "Click on technology categories to view core engineering focus",
+    "categories": {
+      "frontend": "Frontend Development",
+      "backend": "Backend & Toolchain"
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "TECHNICAL EXCELLENCE",
+    "filterAll": "All",
+    "challenge": "Business Challenge",
+    "solution": "Technical Solution",
+    "metrics": "Key Engineering Metrics",
+    "architecture": "Stack & System Architecture",
+    "detailsBtn": "Technical Deep Dive",
+    "closeBtn": "Close",
+    "codeBtn": "Source Code",
+    "liveBtn": "Live Demo"
+  },
+  "contact": {
+    "title": "Let's start a conversation",
+    "subtitle": "CONTACT",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "message": "Your Message",
+      "send": "Send Request",
+      "sending": "Sending...",
+      "success": "Thank you! Your message has been acquired successfully. Khiên Nguyễn will reply within the next 24 hours.",
+      "error": "Something went wrong. Please try again later."
+    },
+    "info": {
+      "email": "Direct Corporate Email",
+      "phone": "Cellular Line",
+      "location": "Geographic Location",
+      "locationValue": "Hanoi, Vietnam"
+    },
+    "inbox": {
+      "title": "Received Contacts (Stored Locally)",
+      "empty": "No enquiries submitted during this local session yet.",
+      "count": "enquiries"
+    }
+  },
+  "resume": {
+    "title": "KHIEN NGUYEN'S PORTFOLIO RESUME",
+    "subtitle": "PROFESSIONAL CURRICULUM VITAE",
+    "download": "Download PDF Resume",
+    "close": "Close"
+  }
+}

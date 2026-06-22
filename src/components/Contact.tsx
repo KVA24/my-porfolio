@@ -6,15 +6,15 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Send, RefreshCw, MessageSquare, X, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { TRANSLATIONS } from '../data';
 import { Language, ContactMessage } from '../types';
+import { useTranslation } from 'react-i18next';
 
 interface ContactProps {
-  t: typeof TRANSLATIONS.VN;
   lang: Language;
 }
 
-export default function Contact({ t, lang }: ContactProps) {
+export default function Contact({ lang }: ContactProps) {
+  const { t, i18n } = useTranslation();
   // Contact Form State
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSending, setIsSending] = useState(false);
@@ -68,7 +68,7 @@ export default function Contact({ t, lang }: ContactProps) {
         name: formData.name,
         email: formData.email,
         message: formData.message,
-        timestamp: new Date().toLocaleTimeString(lang === Language.VN ? 'vi-VN' : 'en-US', {
+        timestamp: new Date().toLocaleTimeString(i18n.language === 'vi' ? 'vi-VN' : 'en-US', {
           hour: '2-digit', minute: '2-digit', second: '2-digit'
         })
       };
@@ -84,12 +84,12 @@ export default function Contact({ t, lang }: ContactProps) {
     <section id="contact" className="py-20 px-4 sm:px-8 bg-[#0c1015] border-t border-[#21262d]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
+
           {/* Left information list */}
           <div className="lg:col-span-5 space-y-6">
             <div>
-              <p className="text-xs font-bold text-cyan-400 uppercase tracking-widest">{t.contactSubtitle}</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-1">{t.contactTitle}</h2>
+              <p className="text-xs font-bold text-cyan-400 uppercase tracking-widest">{t('contact.subtitle')}</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-1">{t('contact.title')}</h2>
               <div className="w-12 h-1 bg-cyan-500 rounded mt-3"></div>
             </div>
 
@@ -103,7 +103,7 @@ export default function Contact({ t, lang }: ContactProps) {
                   <Mail size={18} />
                 </div>
                 <div>
-                  <p className="text-xs text-[#8b949e] uppercase font-bold tracking-wider">{t.contactInfoEmail}</p>
+                  <p className="text-xs text-[#8b949e] uppercase font-bold tracking-wider">{t('contact.info.email')}</p>
                   <p className="text-white font-semibold text-sm">khiennd98@gmail.com</p>
                 </div>
               </div>
@@ -113,7 +113,7 @@ export default function Contact({ t, lang }: ContactProps) {
                   <Phone size={18} />
                 </div>
                 <div>
-                  <p className="text-xs text-[#8b949e] uppercase font-bold tracking-wider">{t.contactInfoPhone}</p>
+                  <p className="text-xs text-[#8b949e] uppercase font-bold tracking-wider">{t('contact.info.phone')}</p>
                   <p className="text-white font-semibold text-sm">+84 (0) 98 123 3521</p>
                 </div>
               </div>
@@ -123,8 +123,8 @@ export default function Contact({ t, lang }: ContactProps) {
                   <MapPin size={18} />
                 </div>
                 <div>
-                  <p className="text-xs text-[#8b949e] uppercase font-bold tracking-wider">{t.contactInfoLoc}</p>
-                  <p className="text-white font-semibold text-sm">{t.contactInfoLocVal}</p>
+                  <p className="text-xs text-[#8b949e] uppercase font-bold tracking-wider">{t('contact.info.location')}</p>
+                  <p className="text-white font-semibold text-sm">{t('contact.info.locationValue')}</p>
                 </div>
               </div>
             </div>
@@ -147,9 +147,9 @@ export default function Contact({ t, lang }: ContactProps) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5 focus-within:text-cyan-400">
                     <label className="text-xs font-bold text-[#8b949e] uppercase tracking-wide">
-                      {t.contactFormName}
+                      {t('contact.form.name')}
                     </label>
-                    <input 
+                    <input
                       type="text"
                       required
                       value={formData.name}
@@ -160,9 +160,9 @@ export default function Contact({ t, lang }: ContactProps) {
                   </div>
                   <div className="space-y-1.5 focus-within:text-cyan-400">
                     <label className="text-xs font-bold text-[#8b949e] uppercase tracking-wide">
-                      {t.contactFormEmail}
+                      {t('contact.form.email')}
                     </label>
-                    <input 
+                    <input
                       type="email"
                       required
                       value={formData.email}
@@ -175,9 +175,9 @@ export default function Contact({ t, lang }: ContactProps) {
 
                 <div className="space-y-1.5 focus-within:text-cyan-400">
                   <label className="text-xs font-bold text-[#8b949e] uppercase tracking-wide">
-                    {t.contactFormMsg}
+                    {t('contact.form.message')}
                   </label>
-                  <textarea 
+                  <textarea
                     required
                     rows={4}
                     value={formData.message}
@@ -190,19 +190,19 @@ export default function Contact({ t, lang }: ContactProps) {
                 {/* Message states feedback banner */}
                 <AnimatePresence>
                   {formSuccess && (
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
                       className="p-3 bg-emerald-950/40 text-emerald-400 border border-emerald-500/30 rounded-lg text-xs flex items-center gap-2"
                     >
                       <CheckCircle size={14} />
-                      <span>{t.contactFormSuccess}</span>
+                      <span>{t('contact.form.success')}</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
 
-                <button 
+                <button
                   type="submit"
                   disabled={isSending}
                   className="w-full bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-slate-900 font-bold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all cursor-pointer text-xs uppercase"
@@ -210,12 +210,12 @@ export default function Contact({ t, lang }: ContactProps) {
                   {isSending ? (
                     <>
                       <RefreshCw size={14} className="animate-spin" />
-                      <span>{t.contactFormSending}</span>
+                      <span>{t('contact.form.sending')}</span>
                     </>
                   ) : (
                     <>
                       <Send size={14} />
-                      <span>{t.contactFormSend}</span>
+                      <span>{t('contact.form.send')}</span>
                     </>
                   )}
                 </button>
@@ -227,15 +227,15 @@ export default function Contact({ t, lang }: ContactProps) {
               <div className="flex justify-between items-center border-b border-[#21262d] pb-3 mb-4">
                 <div className="flex items-center gap-2">
                   <MessageSquare size={16} className="text-cyan-400" />
-                  <h4 className="text-white font-extrabold text-sm">{t.contactInboxTitle}</h4>
+                  <h4 className="text-white font-extrabold text-sm">{t('contact.inbox.title')}</h4>
                 </div>
                 <span className="text-[10px] bg-cyan-950 text-cyan-400 border border-cyan-800/30 px-2 py-0.5 rounded font-mono font-bold">
-                  {localMessages.length} {t.contactInboxCount}
+                  {localMessages.length} {t('contact.inbox.count')}
                 </span>
               </div>
 
               {localMessages.length === 0 ? (
-                <p className="text-xs text-[#8b949e] italic text-center py-4">{t.contactInboxEmpty}</p>
+                <p className="text-xs text-[#8b949e] italic text-center py-4">{t('contact.inbox.empty')}</p>
               ) : (
                 <div className="space-y-3 max-h-48 overflow-y-auto pr-1">
                   {localMessages.map((msg) => (
@@ -248,7 +248,7 @@ export default function Contact({ t, lang }: ContactProps) {
                         </div>
                         <p className="text-[#8b949e] line-clamp-2 italic">&ldquo;{msg.message}&rdquo;</p>
                       </div>
-                      <button 
+                      <button
                         onClick={() => deleteMessage(msg.id)}
                         className="text-[#8b949e] hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity p-1 cursor-pointer"
                         title="Hủy tin nhắn"

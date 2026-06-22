@@ -5,41 +5,43 @@
 
 import { SVGProps } from 'react';
 import { ChevronRight, Eye } from 'lucide-react';
-import { PROJECTS, TESTIMONIALS, TRANSLATIONS } from '../data';
+import { PROJECTS, TESTIMONIALS } from '../data';
 import { Project } from '../types';
+import { useTranslation } from 'react-i18next';
 
 interface ProjectsProps {
-  t: typeof TRANSLATIONS.VN;
   onSelectProject: (project: Project) => void;
 }
 
-export default function Projects({ t, onSelectProject }: ProjectsProps) {
+export default function Projects({ onSelectProject }: ProjectsProps) {
+  const { t } = useTranslation();
+
   return (
     <section id="projects" className="py-20 px-4 sm:px-8 bg-[#0d1117] border-t border-[#21262d] grid-bg">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 animate-fade-in">
-          <p className="text-xs font-bold text-cyan-400 uppercase tracking-widest">{t.projectsSubtitle}</p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-1">{t.projectsTitle}</h2>
+          <p className="text-xs font-bold text-cyan-400 uppercase tracking-widest">{t('projects.subtitle')}</p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-1">{t('projects.title')}</h2>
           <div className="w-16 h-1 bg-cyan-500 rounded mx-auto mt-3"></div>
         </div>
 
         {/* Bento-grid style layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-6">
           {PROJECTS.map((project) => (
-            <div 
+            <div
               key={project.id}
               className="group rounded-xl border border-[#30363d] bg-[#161b22] hover:border-cyan-500/50 transition-all duration-300 overflow-hidden flex flex-col justify-between"
             >
               {/* Image & tag overlay container */}
               <div className="relative aspect-video overflow-hidden border-b border-[#21262d] bg-[#090d13]">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500" 
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#090d13] via-[#090d13]/20 to-transparent" />
-                
+
                 {/* Tags overlay */}
                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
                   <span className="bg-cyan-500 text-[#0d1117] text-xs font-bold px-2.5 py-1 rounded">
@@ -77,15 +79,15 @@ export default function Projects({ t, onSelectProject }: ProjectsProps) {
 
                 {/* Buttons Action bar */}
                 <div className="flex items-center gap-3 pt-4 border-t border-[#21262d]/50">
-                  <button 
+                  <button
                     onClick={() => onSelectProject(project)}
                     className="flex-1 bg-[#21262d] hover:bg-[#30363d] text-white py-2 px-4 rounded-lg font-bold text-xs border border-[#30363d] flex items-center justify-center gap-1.5 cursor-pointer leading-7"
                   >
-                    <span>{t.projectDetailsBtn}</span>
+                    <span>{t('projects.detailsBtn')}</span>
                     <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </button>
-                  
-                  <a 
+
+                  <a
                     href={project.demoUrl}
                     onClick={(e) => { e.preventDefault(); alert("Interactive client prototype live inside AI Studio sandbox!"); }}
                     className="bg-transparent hover:bg-cyan-500/10 text-cyan-400 py-2 px-3 rounded-lg border border-cyan-500/30 font-bold text-xs flex items-center justify-center gap-1 cursor-pointer leading-7"

@@ -3,13 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { TRANSLATIONS } from '../data';
+import { useTranslation } from 'react-i18next';
 
-interface FooterProps {
-  t: typeof TRANSLATIONS.VN;
-}
-
-export default function Footer({ t }: FooterProps) {
+export default function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="bg-[#090d13] border-t border-[#21262d] py-12 px-4 sm:px-8 text-center text-xs text-[#8b949e]">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -21,11 +18,11 @@ export default function Footer({ t }: FooterProps) {
           &copy; {new Date().getFullYear()} Khien Nguyen. All rights reserved. Powered by React 19 & Tailwind.
         </p>
         <div className="flex gap-4">
-          <a href="#about" className="hover:text-white transition-colors">{t.navAbout}</a>
+          <a href="#about" className="hover:text-white transition-colors">{t('nav.about')}</a>
           <span>&middot;</span>
-          <a href="#skills" className="hover:text-white transition-colors">{t.navSkills}</a>
+          <a href="#skills" className="hover:text-white transition-colors">{t('nav.skills')}</a>
           <span>&middot;</span>
-          <a href="#projects" className="hover:text-white transition-colors">{t.navProjects}</a>
+          <a href="#projects" className="hover:text-white transition-colors">{t('nav.projects')}</a>
         </div>
       </div>
     </footer>

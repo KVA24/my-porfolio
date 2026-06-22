@@ -1,0 +1,86 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "about": "Về tôi",
+    "skills": "Kỹ năng",
+    "projects": "Dự án",
+    "contact": "Liên hệ"
+  },
+  "resume": {
+    "button": "Tải Hồ Sơ"
+  },
+  "hero": {
+    "ready": "Sẵn sàng cho dự án mới",
+    "title": "Kiến tạo trải nghiệm",
+    "titleHighlight": "Kỹ thuật số đỉnh cao",
+    "subtitle": "Tôi là Khiên Nguyễn, một React Developer chuyên sâu về tối ưu hóa hiệu năng UI/UX và kiến trúc Frontend mở rộng. Kết hợp giữa mỹ thuật tinh gọn và quy chuẩn kỹ thuật nghiêm ngặt.",
+    "viewProjects": "Xem dự án của tôi",
+    "contactNow": "Liên hệ ngay"
+  },
+  "about": {
+    "title": "Hành trình chuyên môn",
+    "subtitle": "VỀ TÔI",
+    "description": "Tôi là một kỹ sư phần mềm tập trung vào việc xây dựng các kiến trúc Frontend hiệu suất cao bằng hệ sinh thái React. Luôn coi mã nguồn là một tác phẩm kỹ thuật mang tính nghệ thuật, tôi định hướng tối ưu hóa từng pixel, giảm tải thời gian phản hồi, và tạo lập cấu trúc module dễ mở rộng cho dự án doanh nghiệp đại trà.",
+    "expYear": "Năm Kinh Nghiệm",
+    "coreTech": {
+      "title": "Kỹ thuật xuất sắc",
+      "desc": "Tối ưu hóa hiệu suất (LCP/FID/CLS) ở mức tuyệt đối. Thành thạo Micro-frontend, Server-side Rendering và quản lý State phức tạp."
+    },
+    "mindset": {
+      "title": "Tư duy định hướng sản phẩm",
+      "desc": "Tiếp cận phần mềm từ lăng kính trải nghiệm người dùng cuối. Biến thách thức kinh doanh phức tạp thành giải pháp giao diện đơn giản, hữu hiệu."
+    }
+  },
+  "skills": {
+    "title": "Kỹ năng chuyên môn",
+    "subtitle": "CÔNG NGHỆ CHỦ ĐẠO",
+    "clickHint": "Nhấn vào thẻ kỹ năng để xem các thuộc tính cốt lõi liên quan",
+    "categories": {
+      "frontend": "Phát Triển Frontend",
+      "backend": "Backend & Công cụ hỗ trợ"
+    }
+  },
+  "projects": {
+    "title": "Dự án tiêu biểu",
+    "subtitle": "SẢN PHẨM KHÁC BIỆT",
+    "filterAll": "Tất cả",
+    "challenge": "Thách thức kinh doanh",
+    "solution": "Giải pháp kỹ thuật",
+    "metrics": "Chỉ số đo lường",
+    "architecture": "Công nghệ & Kiến trúc",
+    "detailsBtn": "Chi tiết kỹ thuật",
+    "closeBtn": "Đóng",
+    "codeBtn": "Mã nguồn",
+    "liveBtn": "Demo Trực Tiếp"
+  },
+  "contact": {
+    "title": "Khởi tạo ý tưởng mới",
+    "subtitle": "LIÊN HỆ",
+    "form": {
+      "name": "Họ và tên",
+      "email": "Địa chỉ email",
+      "message": "Nội dung tin nhắn",
+      "send": "Gửi yêu cầu",
+      "sending": "Đang gửi...",
+      "success": "Cảm ơn bạn! Yêu cầu của bạn đã được tiếp nhận thành công. Khiên Nguyễn sẽ liên hệ lại trong vòng 24 giờ tới.",
+      "error": "Có lỗi xảy ra, vui lòng thử lại sau giây lát."
+    },
+    "info": {
+      "email": "Email trực tiếp",
+      "phone": "Điện thoại di động",
+      "location": "Địa chỉ",
+      "locationValue": "Hà Nội, Việt Nam"
+    },
+    "inbox": {
+      "title": "Hộp thư yêu cầu (Lưu trữ cục bộ)",
+      "empty": "Chưa có yêu cầu nào được gửi trong phiên này.",
+      "count": "yêu cầu"
+    }
+  },
+  "resume": {
+    "title": "HỒ SƠ CỦA Khiên Nguyễn",
+    "subtitle": "SƠ YẾU LÝ LỊCH CHUYÊN NGHIỆP",
+    "download": "Tải PDF Bản Tóm Tắt",
+    "close": "Đóng"
+  }
+}

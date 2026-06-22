@@ -5,21 +5,21 @@
 
 import { Award, X, Mail, Phone, MapPin, User, Briefcase, BookOpen, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { TRANSLATIONS } from '../data';
+import { useTranslation } from 'react-i18next';
 
 interface ResumeModalProps {
-  t: typeof TRANSLATIONS.VN;
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function ResumeModal({ t, isOpen, onClose }: ResumeModalProps) {
+export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
+  const { t } = useTranslation();
   return (
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -28,7 +28,7 @@ export default function ResumeModal({ t, isOpen, onClose }: ResumeModalProps) {
           />
 
           {/* Resume Sheet Body */}
-          <motion.div 
+          <motion.div
             initial={{ scale: 0.95, y: 30, opacity: 0 }}
             animate={{ scale: 1, y: 0, opacity: 1 }}
             exit={{ scale: 0.95, y: 30, opacity: 0 }}
@@ -39,11 +39,11 @@ export default function ResumeModal({ t, isOpen, onClose }: ResumeModalProps) {
               <div className="flex items-center gap-2">
                 <Award size={18} className="text-cyan-400 animate-pulse" />
                 <div>
-                  <h3 className="text-white font-extrabold text-sm tracking-wide">{t.resumeTitle}</h3>
-                  <p className="text-[10px] text-[#8b949e] uppercase font-mono">{t.resumeSubtitle}</p>
+                  <h3 className="text-white font-extrabold text-sm tracking-wide">{t('resume.title')}</h3>
+                  <p className="text-[10px] text-[#8b949e] uppercase font-mono">{t('resume.subtitle')}</p>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={onClose}
                 className="p-1.5 rounded-lg hover:bg-[#21262d] text-[#8b949e] hover:text-white cursor-pointer"
               >
@@ -53,7 +53,7 @@ export default function ResumeModal({ t, isOpen, onClose }: ResumeModalProps) {
 
             {/* Layout Content scroll area */}
             <div className="p-6 sm:p-10 overflow-y-auto space-y-8 text-xs sm:text-sm bg-[#161b22] leading-relaxed text-slate-300">
-              
+
               {/* Header Profile Info inside CV */}
               <div className="border-b border-[#21262d] pb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
@@ -175,18 +175,18 @@ export default function ResumeModal({ t, isOpen, onClose }: ResumeModalProps) {
                 Generated via DevPortfolio 2026-06-22
               </span>
               <div className="flex gap-2">
-                <button 
+                <button
                   onClick={() => { window.print(); }}
                   className="bg-[#21262d] hover:bg-[#30363d] text-white py-1.5 px-3 rounded font-bold text-xs border border-[#30363d] flex items-center gap-1 animate-pulse cursor-pointer h-9"
                 >
                   <Download size={12} />
-                  <span>{t.resumeDownload}</span>
+                  <span>{t('resume.download')}</span>
                 </button>
-                <button 
+                <button
                   onClick={onClose}
                   className="bg-cyan-500 hover:bg-cyan-400 text-[#0d1117] py-1.5 px-4 rounded font-extrabold text-xs cursor-pointer h-9"
                 >
-                  {t.resumeClose}
+                  {t('resume.close')}
                 </button>
               </div>
             </div>
