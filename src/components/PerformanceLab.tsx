@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { Terminal, Sliders, RefreshCw, Activity } from 'lucide-react';
 
-export default function PerformanceLab() {
+const PerformanceLab = memo(function PerformanceLab() {
   // Sandbox state
   const [simulatedElements, setSimulatedElements] = useState<number>(50);
   const [isOptimized, setIsOptimized] = useState<boolean>(true);
@@ -217,4 +217,6 @@ export default function PerformanceLab() {
       </div>
     </section>
   );
-}
+});
+
+export default PerformanceLab;

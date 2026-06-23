@@ -6,8 +6,9 @@
 import { Activity, Sparkles, Sliders } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
+import { memo } from 'react';
 
-export default function About() {
+const About = memo(function About() {
   const { t } = useTranslation();
 
   const containerVariants = {
@@ -139,4 +140,6 @@ export default function About() {
       </div>
     </section>
   );
-}
+});
+
+export default About;

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { ArrowDown, Terminal } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
@@ -53,7 +53,7 @@ export const FastListCount = memo(({ items }) => {
 }`
 };
 
-export default function Hero() {
+export default memo(function Hero() {
   const { t } = useTranslation();
   const [activeCodeTab, setActiveCodeTab] = useState<'profile' | 'performance' | 'tailwind'>('profile');
 
@@ -116,7 +116,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="px-6 py-3 bg-[#161b22] hover:bg-[#1f2937] text-white font-semibold rounded-lg border border-[#30363d] text-sm text-center transition-all cursor-pointer"
+            className="px-6 py-3 bg-primary hover:bg-[#1f2937] font-semibold rounded-lg border border-[#30363d] text-sm text-center transition-all cursor-pointer"
           >
             {t('hero.contactNow')}
           </a>
@@ -125,7 +125,7 @@ export default function Hero() {
         {/* Micro Stats Row */}
         <motion.div variants={itemVariants} className="grid grid-cols-3 gap-6 sm:gap-12 pt-8 border-t border-[#21262d]/70 w-full max-w-md">
           <motion.div whileHover={{ scale: 1.05 }}>
-            <div className="text-2xl sm:text-3xl font-extrabold text-white">3+</div>
+            <div className="text-2xl sm:text-3xl font-extrabold">3+</div>
             <div className="text-xs text-[#8b949e] mt-1 uppercase tracking-wider font-medium">{t('about.expYear')}</div>
           </motion.div>
           <motion.div whileHover={{ scale: 1.05 }}>
@@ -231,4 +231,4 @@ export default function Hero() {
       </motion.div>
     </section>
   );
-}
+});

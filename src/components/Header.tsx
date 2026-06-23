@@ -6,6 +6,7 @@
 import { FileText, Sun, Moon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../context/ThemeContext';
+import { memo } from 'react';
 
 interface HeaderProps {
   lang: 'en' | 'vi';
@@ -13,7 +14,7 @@ interface HeaderProps {
   onOpenResume: () => void;
 }
 
-export default function Header({ lang, setLang, onOpenResume }: HeaderProps) {
+const Header = memo(function Header({ lang, setLang, onOpenResume }: HeaderProps) {
   const { t } = useTranslation();
   const { toggleTheme } = useTheme();
   return (
@@ -105,4 +106,6 @@ export default function Header({ lang, setLang, onOpenResume }: HeaderProps) {
       </div>
     </header>
   );
-}
+});
+
+export default Header;

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { SVGProps } from 'react';
+import { SVGProps, memo } from 'react';
 import { ChevronRight, Eye } from 'lucide-react';
 import { PROJECTS, TESTIMONIALS } from '../data';
 import { Project } from '../types';
@@ -14,7 +14,7 @@ interface ProjectsProps {
   onSelectProject: (project: Project) => void;
 }
 
-export default function Projects({ onSelectProject }: ProjectsProps) {
+const Projects = memo(function Projects({ onSelectProject }: ProjectsProps) {
   const { t } = useTranslation();
 
   const containerVariants = {
@@ -163,7 +163,9 @@ export default function Projects({ onSelectProject }: ProjectsProps) {
       </div>
     </section>
   );
-}
+});
+
+export default Projects;
 
 function QuoteIcon(props: SVGProps<SVGSVGElement>) {
   return (

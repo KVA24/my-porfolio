@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect, FormEvent } from 'react';
+import { useState, useEffect, FormEvent, memo } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Send, RefreshCw, MessageSquare, X, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Language, ContactMessage } from '../types';
@@ -13,7 +13,7 @@ interface ContactProps {
   lang: Language;
 }
 
-export default function Contact({ lang }: ContactProps) {
+const Contact = memo(function Contact({ lang }: ContactProps) {
   const { t, i18n } = useTranslation();
   // Contact Form State
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -267,4 +267,6 @@ export default function Contact({ lang }: ContactProps) {
       </div>
     </section>
   );
-}
+});
+
+export default Contact;

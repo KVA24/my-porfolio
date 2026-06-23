@@ -4,8 +4,9 @@
  */
 
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 
-export default function Footer() {
+const Footer = memo(function Footer() {
   const { t } = useTranslation();
   
   return (
@@ -28,4 +29,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+});
+
+export default Footer;

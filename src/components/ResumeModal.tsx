@@ -6,13 +6,14 @@
 import { Award, X, Mail, Phone, MapPin, User, Briefcase, BookOpen, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 
 interface ResumeModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
+const ResumeModal = memo(function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   const { t } = useTranslation();
   return (
     <AnimatePresence>
@@ -195,4 +196,6 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
       )}
     </AnimatePresence>
   );
-}
+});
+
+export default ResumeModal;

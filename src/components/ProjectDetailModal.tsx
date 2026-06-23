@@ -7,13 +7,14 @@ import { Settings, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Project } from '../types';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 
 interface ProjectDetailModalProps {
   project: Project | null;
   onClose: () => void;
 }
 
-export default function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
+const ProjectDetailModal = memo(function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
   const { t } = useTranslation();
   return (
     <AnimatePresence>
@@ -111,4 +112,6 @@ export default function ProjectDetailModal({ project, onClose }: ProjectDetailMo
       )}
     </AnimatePresence>
   );
-}
+});
+
+export default ProjectDetailModal;

@@ -3,11 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
@@ -16,18 +17,29 @@ html {
   color-scheme: light dark;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Dark Mode (default) */
 body {
   font-family: var(--font-sans);
-  background-color: #0d1117;
-  color: #c9d1d9;
+  background-color: #0F172A;
+  color: #F1F5F9;
   overflow-x: hidden;
 }
 
 /* Light Mode */
 html.light body {
-  background-color: #f6f8fa;
-  color: #24292f;
+  background-color: #F8FAFC;
+  color: #0F172A;
 }
 
 /* Custom gorgeous scrollbar - Dark Mode */
@@ -36,67 +48,67 @@ html.light body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #090d13;
+  background: #0A0F1F;
 }
 ::-webkit-scrollbar-thumb {
-  background: #21262d;
+  background: #1E293B;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #30363d;
+  background: #334155;
 }
 
 /* Light Mode scrollbar */
 html.light ::-webkit-scrollbar-track {
-  background: #f0f2f5;
+  background: #F1F5F9;
 }
 html.light ::-webkit-scrollbar-thumb {
-  background: #d0d7de;
+  background: #CBD5E1;
   border-radius: 4px;
 }
 html.light ::-webkit-scrollbar-thumb:hover {
-  background: #b6e3f0;
+  background: #94A3B8;
 }
 
 /* Selection tint */
 ::selection {
-  background-color: rgba(56, 189, 248, 0.25);
-  color: #38bdf8;
+  background-color: rgba(34, 197, 94, 0.25);
+  color: #22C55E;
 }
 
 html.light ::selection {
-  background-color: rgba(3, 102, 214, 0.15);
-  color: #0366d6;
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #16A34A;
 }
 
 /* Glassmorphism utility - Dark Mode */
 .glass-panel {
-  background: rgba(22, 27, 34, 0.7);
+  background: rgba(30, 41, 59, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(241, 245, 249, 0.04);
 }
 
 .glass-panel-heavy {
-  background: rgba(13, 17, 23, 0.95);
+  background: rgba(15, 23, 42, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(241, 245, 249, 0.08);
 }
 
 /* Light Mode glassmorphism */
 html.light .glass-panel {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(3, 102, 214, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 html.light .glass-panel-heavy {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(3, 102, 214, 0.12);
+  border: 1px solid rgba(15, 23, 42, 0.12);
 }
 
 /* Grid background pattern - Dark Mode */
@@ -502,4 +514,145 @@ html.light .lang-btn-inactive:hover {
 html.light .lang-btn-active {
   background-color: #38BDF8;
   color: #ffffff;
+}
+
+
+/* ========== FOCUS STATES FOR KEYBOARD NAVIGATION ========== */
+:focus-visible {
+  outline: 2px solid #22C55E;
+  outline-offset: 2px;
+}
+
+html.light :focus-visible {
+  outline: 2px solid #16A34A;
+  outline-offset: 2px;
+}
+
+/* Interactive element focus rings */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #22C55E;
+  outline-offset: 2px;
+}
+
+html.light button:focus-visible,
+html.light a:focus-visible,
+html.light input:focus-visible,
+html.light textarea:focus-visible,
+html.light select:focus-visible {
+  outline: 2px solid #16A34A;
+  outline-offset: 2px;
+}
+
+/* ========== SMOOTH TRANSITIONS ========== */
+/* Apply smooth transitions to interactive elements */
+button,
+a,
+input,
+textarea,
+select,
+[role="button"] {
+  transition: all 150ms ease-out;
+}
+
+/* Disable transitions for prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  button,
+  a,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    transition: none;
+  }
+}
+
+/* ========== CURSOR FEEDBACK ========== */
+button,
+[role="button"],
+a,
+input[type="checkbox"],
+input[type="radio"],
+select,
+.cursor-pointer {
+  cursor: pointer;
+}
+
+a {
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  cursor: text;
+}
+
+/* ========== TYPOGRAPHY STYLING ========== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+/* ========== IMPROVED LIGHT MODE CONTRAST ========== */
+html.light {
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --bg-primary: #F8FAFC;
+  --bg-secondary: #FFFFFF;
+  --border-color: #E2E8F0;
+}
+
+/* Ensure sufficient contrast in light mode */
+html.light body {
+  color: #0F172A;
+}
+
+html.light p,
+html.light li,
+html.light td {
+  color: #334155;
+}
+
+html.light strong,
+html.light b,
+html.light .font-semibold,
+html.light .font-bold {
+  color: #0F172A;
+}
+
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6 {
+  color: #0F172A;
+}
+
+/* Link colors in light mode */
+html.light a {
+  color: #0366D6;
+}
+
+html.light a:hover {
+  color: #033DB8;
+}
+
+/* ========== ANTI-PATTERNS TO AVOID ========== */
+/* No emoji icons - use SVG only */
+.emoji-warning {
+  display: none;
+}
+
+/* Prevent layout shift on hover */
+button:hover,
+[role="button"]:hover,
+.hover-card:hover {
+  transform: none;
 }

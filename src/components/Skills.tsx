@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { Layers, Cpu, Code, CheckCircle, ChevronRight, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SKILL_CATEGORIES } from '../data';
 import { useTranslation } from 'react-i18next';
 
-export default function Skills() {
+const Skills = memo(function Skills() {
   const { t } = useTranslation();
   const [selectedSkillCategory, setSelectedSkillCategory] = useState<string>('frontend');
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
@@ -163,4 +163,6 @@ export default function Skills() {
       </div>
     </section>
   );
-}
+});
+
+export default Skills;
