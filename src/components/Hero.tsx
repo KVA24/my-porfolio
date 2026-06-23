@@ -68,9 +68,9 @@ export default function Hero() {
           {t('hero.ready')}
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary tracking-tight leading-tight">
           {t('hero.title')}{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-400 block sm:inline mt-1.5 sm:mt-0">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-sky-400 to-emerald-400 block sm:inline mt-1.5 sm:mt-0">
             {t('hero.titleHighlight')}
           </span>
         </h1>
@@ -82,7 +82,7 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-4">
           <a
             href="#projects"
-            className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-[#0d1117] font-semibold rounded-lg shadow-lg hover:shadow-cyan-500/20 text-sm text-center flex items-center justify-center gap-2 transition-all cursor-pointer"
+            className="px-6 py-3 bg-linear-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-[#0d1117] font-semibold rounded-lg shadow-lg hover:shadow-cyan-500/20 text-sm text-center flex items-center justify-center gap-2 transition-all cursor-pointer"
           >
             <span>{t('hero.viewProjects')}</span>
             <ArrowDown size={15} className="animate-bounce" />
@@ -114,7 +114,7 @@ export default function Hero() {
 
       {/* Right Tabbed IDE Editor Column */}
       <div className="lg:col-span-5 relative mt-6 lg:mt-0">
-        <div className="absolute -inset-1.5 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-xl blur-md opacity-20 transition duration-1000"></div>
+        <div className="absolute -inset-1.5 bg-linear-to-r from-cyan-500 to-emerald-500 rounded-xl blur-md opacity-20 transition duration-1000"></div>
         <div className="relative rounded-xl border border-[#30363d] bg-[#161b22] overflow-hidden shadow-2xl">
           {/* Terminal Header */}
           <div className="bg-[#090d13] px-4 py-3 flex items-center justify-between border-b border-[#21262d]">

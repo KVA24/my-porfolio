@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { Project } from './types';
 
 // Theme Provider
-import { ThemeProvider, useTheme } from './context/ThemeContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 // Modular Sub-components
 import Header from './components/Header';
@@ -24,7 +24,6 @@ import ResumeModal from './components/ResumeModal';
 
 function AppContent() {
   const { i18n } = useTranslation();
-  const { theme } = useTheme();
   const [lang, setLang] = useState<'en' | 'vi'>(i18n.language as 'en' | 'vi' || 'vi');
 
   const changeLanguage = (lng: 'en' | 'vi') => {
@@ -39,15 +38,7 @@ function AppContent() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden font-sans selection:text-cyan-400 dark:selection:text-cyan-400 light:selection:text-blue-600"
-    style={{
-      backgroundColor: theme === 'light' ? '#f6f8fa' : '#0d1117',
-      color: theme === 'light' ? '#24292f' : '#c9d1d9',
-      backgroundImage: theme === 'light'
-        ? 'linear-gradient(rgba(3, 102, 214, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(3, 102, 214, 0.03) 1px, transparent 1px)'
-        : undefined,
-      backgroundSize: theme === 'light' ? '40px 40px' : undefined,
-    }}>
+    <div className="min-h-screen relative overflow-x-hidden font-sans selection:text-cyan-400 bg-primary text-primary grid-bg">
 
       {/* Decorative Blur Spheres */}
       <div className="glow-mesh top-[10%] right-[-100px] sm:right-[5%] pointer-events-none"></div>
