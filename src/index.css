@@ -464,3 +464,42 @@ html.light .alert-error {
   border-color: #d1242f;
   color: #da3633;
 }
+
+/* Language Switcher Button Styles */
+.lang-btn-container {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+}
+html.light .lang-btn-container {
+  background-color: #f3f3f3;
+  border: 1px solid #d9e0e8;
+}
+
+.lang-btn-inactive {
+  background-color: transparent;
+  color: #8b949e;
+  border: none;
+}
+html.light .lang-btn-inactive {
+  color: #57606a;
+}
+
+.lang-btn-inactive:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #c9d1d9;
+}
+html.light .lang-btn-inactive:hover {
+  background-color: rgba(3, 102, 214, 0.05);
+  color: #24292f;
+}
+
+.lang-btn-active {
+  background-color: #38BDF8;
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+html.light .lang-btn-active {
+  background-color: #38BDF8;
+  color: #ffffff;
+}

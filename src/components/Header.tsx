@@ -65,13 +65,13 @@ export default function Header({ lang, setLang, onOpenResume }: HeaderProps) {
           </button>
 
           {/* Lang switcher */}
-          <div className="flex items-center bg-secondary border border-primary rounded-lg p-0.5">
+          <div className="lang-btn-container flex items-center rounded-lg p-0.5">
             <button
               onClick={() => setLang('vi')}
               className={`px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
                 lang === 'vi'
-                  ? 'bg-accent text-[#0d1117] shadow-sm'
-                  : 'text-secondary hover:text-strong'
+                  ? 'lang-btn-active'
+                  : 'lang-btn-inactive'
               }`}
             >
               VN
@@ -80,8 +80,8 @@ export default function Header({ lang, setLang, onOpenResume }: HeaderProps) {
               onClick={() => setLang('en')}
               className={`px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
                 lang === 'en'
-                  ? 'bg-accent text-[#0d1117] shadow-sm'
-                  : 'text-secondary hover:text-strong'
+                  ? 'lang-btn-active'
+                  : 'lang-btn-inactive'
               }`}
             >
               EN
