@@ -7,6 +7,9 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Project } from './types';
 
+// Theme Provider
+import { ThemeProvider, useTheme } from './context/ThemeContext';
+
 // Modular Sub-components
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -19,8 +22,9 @@ import Footer from './components/Footer';
 import ProjectDetailModal from './components/ProjectDetailModal';
 import ResumeModal from './components/ResumeModal';
 
-export default function App() {
+function AppContent() {
   const { i18n } = useTranslation();
+  const { theme } = useTheme();
   const [lang, setLang] = useState<'en' | 'vi'>(i18n.language as 'en' | 'vi' || 'vi');
 
   const changeLanguage = (lng: 'en' | 'vi') => {
@@ -35,7 +39,15 @@ export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#0d1117] text-[#c9d1d9] relative selection:bg-cyan-500/30 selection:text-cyan-400 overflow-x-hidden font-sans">
+    <div className="min-h-screen relative overflow-x-hidden font-sans selection:text-cyan-400 dark:selection:text-cyan-400 light:selection:text-blue-600"
+    style={{
+      backgroundColor: theme === 'light' ? '#f6f8fa' : '#0d1117',
+      color: theme === 'light' ? '#24292f' : '#c9d1d9',
+      backgroundImage: theme === 'light'
+        ? 'linear-gradient(rgba(3, 102, 214, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(3, 102, 214, 0.03) 1px, transparent 1px)'
+        : undefined,
+      backgroundSize: theme === 'light' ? '40px 40px' : undefined,
+    }}>
 
       {/* Decorative Blur Spheres */}
       <div className="glow-mesh top-[10%] right-[-100px] sm:right-[5%] pointer-events-none"></div>
@@ -84,5 +96,13 @@ export default function App() {
             />
 
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }

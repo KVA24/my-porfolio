@@ -13,8 +13,10 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light dark;
 }
 
+/* Dark Mode (default) */
 body {
   font-family: var(--font-sans);
   background-color: #0d1117;
@@ -22,7 +24,13 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom gorgeous scrollbar */
+/* Light Mode */
+html.light body {
+  background-color: #f6f8fa;
+  color: #24292f;
+}
+
+/* Custom gorgeous scrollbar - Dark Mode */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -38,13 +46,30 @@ body {
   background: #30363d;
 }
 
+/* Light Mode scrollbar */
+html.light ::-webkit-scrollbar-track {
+  background: #f0f2f5;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #d0d7de;
+  border-radius: 4px;
+}
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #b6e3f0;
+}
+
 /* Selection tint */
 ::selection {
   background-color: rgba(56, 189, 248, 0.25);
   color: #38bdf8;
 }
 
-/* Glassmorphism utility */
+html.light ::selection {
+  background-color: rgba(3, 102, 214, 0.15);
+  color: #0366d6;
+}
+
+/* Glassmorphism utility - Dark Mode */
 .glass-panel {
   background: rgba(22, 27, 34, 0.7);
   backdrop-filter: blur(12px);
@@ -59,7 +84,22 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Grid background pattern */
+/* Light Mode glassmorphism */
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(3, 102, 214, 0.08);
+}
+
+html.light .glass-panel-heavy {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(3, 102, 214, 0.12);
+}
+
+/* Grid background pattern - Dark Mode */
 .grid-bg {
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
@@ -67,7 +107,15 @@ body {
   background-size: 40px 40px;
 }
 
-/* Animated gradient background mesh */
+/* Light Mode grid */
+html.light .grid-bg {
+  background-image: 
+    linear-gradient(rgba(3, 102, 214, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(3, 102, 214, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Animated gradient background mesh - Dark Mode */
 .glow-mesh {
   position: absolute;
   width: 600px;
@@ -83,6 +131,27 @@ body {
   width: 400px;
   height: 400px;
   background: radial-gradient(circle, rgba(6, 182, 212, 0.06) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Light Mode mesh */
+html.light .glow-mesh {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(3, 102, 214, 0.06) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+html.light .glow-mesh-cyan {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(6, 177, 224, 0.04) 0%, transparent 70%);
   filter: blur(60px);
   pointer-events: none;
   z-index: 0;
