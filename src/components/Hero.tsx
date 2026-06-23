@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import {useState} from 'react';
+import {memo, useState} from 'react';
 import {ArrowDown, Terminal} from 'lucide-react';
 import {useTranslation} from 'react-i18next';
 import {motion} from 'motion/react';
