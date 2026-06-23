@@ -18,9 +18,6 @@ export default function Header({ lang, setLang, onOpenResume }: HeaderProps) {
     <header className="sticky top-0 z-40 w-full glass-panel border-b border-[#21262d] py-4 px-4 sm:px-8">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="h-9 w-9 rounded-lg bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center text-[#0d1117] font-bold text-lg select-none">
-            KN
-          </div>
           <div>
             <span className="font-extrabold text-white tracking-wider text-lg">Khiên Nguyễn</span>
             <span className="hidden sm:inline-block ml-2 text-xs bg-cyan-950 text-cyan-400 font-mono px-2 py-0.5 rounded-full border border-cyan-800/30">
