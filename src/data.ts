@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Project, SkillCategory, Testimonial } from './types';
+import {Project, SkillCategory, Testimonial} from './types';
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
@@ -22,21 +22,21 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       'Web Workers / Web Sockets'
     ]
   },
-  {
-    id: 'backend',
-    name: 'Backend & Operations',
-    icon: 'Cpu',
-    skills: [
-      'Node.js / Express',
-      'RESTful & GraphQL APIs',
-      'PostgreSQL / MongoDB',
-      'Docker Containerization',
-      'AWS / GCP Cloud',
-      'CI/CD GitHub Actions',
-      'Jest / React Testing Library',
-      'Lighthouse CI & Performance Analytics'
-    ]
-  }
+  // {
+  //   id: 'backend',
+  //   name: 'Backend & Operations',
+  //   icon: 'Cpu',
+  //   skills: [
+  //     'Node.js / Express',
+  //     'RESTful & GraphQL APIs',
+  //     'PostgreSQL / MongoDB',
+  //     'Docker Containerization',
+  //     'AWS / GCP Cloud',
+  //     'CI/CD GitHub Actions',
+  //     'Jest / React Testing Library',
+  //     'Lighthouse CI & Performance Analytics'
+  //   ]
+  // }
 ];
 
 export const PROJECTS: Project[] = [

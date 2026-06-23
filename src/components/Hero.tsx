@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, memo } from 'react';
-import { ArrowDown, Terminal } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
-import { motion } from 'motion/react';
+import {useState} from 'react';
+import {ArrowDown, Terminal} from 'lucide-react';
+import {useTranslation} from 'react-i18next';
+import {motion} from 'motion/react';
 
 const CODE_TAB_CONTENT = {
   profile: `// portfolio.ts
@@ -54,11 +54,11 @@ export const FastListCount = memo(({ items }) => {
 };
 
 export default memo(function Hero() {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const [activeCodeTab, setActiveCodeTab] = useState<'profile' | 'performance' | 'tailwind'>('profile');
-
+  
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: {opacity: 0},
     visible: {
       opacity: 1,
       transition: {
@@ -67,52 +67,58 @@ export default memo(function Hero() {
       },
     },
   };
-
+  
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: {opacity: 0, y: 20},
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
+      transition: {duration: 0.6, ease: 'easeOut'},
     },
   };
-
+  
   return (
-    <section className="relative pt-12 md:pt-24 pb-16 px-4 sm:px-8 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section
+      className="relative pt-12 md:pt-24 pb-16 px-4 sm:px-8 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       {/* Left Intro Text Column */}
       <motion.div
         className="lg:col-span-7 flex flex-col items-start space-y-6"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '0px 0px -100px 0px' }}
+        viewport={{once: true, margin: '0px 0px -100px 0px'}}
       >
-        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 bg-[#1f2937]/50 border border-emerald-500/30 px-3.5 py-1 rounded-full text-xs text-emerald-400 font-medium tracking-wide">
+        <motion.div variants={itemVariants}
+                    className="inline-flex items-center gap-2 bg-[#1f2937]/50 border border-emerald-500/30 px-3.5 py-1 rounded-full text-xs text-emerald-400 font-medium tracking-wide">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span
+              className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
           {t('hero.ready')}
         </motion.div>
-
-        <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary tracking-tight leading-tight">
+        
+        <motion.h1 variants={itemVariants}
+                   className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary tracking-tight leading-tight">
           {t('hero.title')}{' '}
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-sky-400 to-emerald-400 block sm:inline mt-1.5 sm:mt-0">
+          <span
+            className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-sky-400 to-emerald-400 block sm:inline mt-1.5 sm:mt-0">
             {t('hero.titleHighlight')}
           </span>
         </motion.h1>
-
+        
         <motion.p variants={itemVariants} className="text-[#8b949e] text-base sm:text-lg leading-relaxed max-w-2xl">
           {t('hero.subtitle')}
         </motion.p>
-
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-4">
+        
+        <motion.div variants={itemVariants}
+                    className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-4">
           <a
             href="#projects"
             className="px-6 py-3 bg-linear-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-[#0d1117] font-semibold rounded-lg shadow-lg hover:shadow-cyan-500/20 text-sm text-center flex items-center justify-center gap-2 transition-all cursor-pointer"
           >
             <span>{t('hero.viewProjects')}</span>
-            <ArrowDown size={15} className="animate-bounce" />
+            <ArrowDown size={15} className="animate-bounce"/>
           </a>
           <a
             href="#contact"
@@ -121,51 +127,53 @@ export default memo(function Hero() {
             {t('hero.contactNow')}
           </a>
         </motion.div>
-
+        
         {/* Micro Stats Row */}
-        <motion.div variants={itemVariants} className="grid grid-cols-3 gap-6 sm:gap-12 pt-8 border-t border-[#21262d]/70 w-full max-w-md">
-          <motion.div whileHover={{ scale: 1.05 }}>
+        <motion.div variants={itemVariants}
+                    className="grid grid-cols-3 gap-6 sm:gap-12 pt-8 border-t border-[#21262d]/70 w-full max-w-md">
+          <motion.div whileHover={{scale: 1.05}}>
             <div className="text-2xl sm:text-3xl font-extrabold">3+</div>
             <div className="text-xs text-[#8b949e] mt-1 uppercase tracking-wider font-medium">{t('about.expYear')}</div>
           </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }}>
+          <motion.div whileHover={{scale: 1.05}}>
             <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400">10+</div>
             <div className="text-xs text-[#8b949e] mt-1 uppercase tracking-wider font-medium">Projects Done</div>
           </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }}>
+          <motion.div whileHover={{scale: 1.05}}>
             <div className="text-2xl sm:text-3xl font-extrabold text-[#58a6ff]">99%</div>
             <div className="text-xs text-[#8b949e] mt-1 uppercase tracking-wider font-medium">Performance Score</div>
           </motion.div>
         </motion.div>
       </motion.div>
-
+      
       {/* Right Tabbed IDE Editor Column */}
       <motion.div
         className="lg:col-span-5 relative mt-6 lg:mt-0"
-        initial={{ opacity: 0, x: 40 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
-        viewport={{ once: true, margin: '0px 0px -100px 0px' }}
+        initial={{opacity: 0, x: 40}}
+        whileInView={{opacity: 1, x: 0}}
+        transition={{duration: 0.7, ease: 'easeOut', delay: 0.2}}
+        viewport={{once: true, margin: '0px 0px -100px 0px'}}
       >
-        <motion.div className="absolute -inset-1.5 bg-linear-to-r from-cyan-500 to-emerald-500 rounded-xl blur-md opacity-20 transition duration-1000" />
+        <motion.div
+          className="absolute -inset-1.5 bg-linear-to-r from-cyan-500 to-emerald-500 rounded-xl blur-md opacity-20 transition duration-1000"/>
         <motion.div
           className="relative rounded-xl border border-[#30363d] bg-[#161b22] overflow-hidden shadow-2xl"
-          whileHover={{ borderColor: '#38bdf8' }}
-          transition={{ duration: 0.3 }}
+          whileHover={{borderColor: '#38bdf8'}}
+          transition={{duration: 0.3}}
         >
           {/* Terminal Header */}
           <div className="bg-[#090d13] px-4 py-3 flex items-center justify-between border-b border-[#21262d]">
             <div className="flex items-center gap-1.5">
-              <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-              <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-              <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
+              <span className="w-3 h-3 rounded-full bg-[#ff5f56]"/>
+              <span className="w-3 h-3 rounded-full bg-[#ffbd2e]"/>
+              <span className="w-3 h-3 rounded-full bg-[#27c93f]"/>
             </div>
             <div className="flex items-center gap-2 text-xs text-[#8b949e] font-mono">
-              <Terminal size={12} className="text-cyan-400" />
+              <Terminal size={12} className="text-cyan-400"/>
               <span>khiennguyen@dev-lab: ~</span>
             </div>
           </div>
-
+          
           {/* Tab Selectors */}
           <div className="bg-[#0f141c] flex border-b border-[#21262d] text-xs font-mono">
             <motion.button
@@ -175,9 +183,9 @@ export default memo(function Hero() {
                   ? 'bg-[#161b22] text-cyan-400 border-t-2 border-t-cyan-500'
                   : 'text-[#8b949e] hover:bg-[#161b22]/50 hover:text-white'
               }`}
-              whileHover={{ backgroundColor: 'rgba(22, 27, 34, 0.5)' }}
+              whileHover={{backgroundColor: 'rgba(22, 27, 34, 0.5)'}}
             >
-              <div className="w-2 h-2 rounded bg-yellow-500" />
+              <div className="w-2 h-2 rounded bg-yellow-500"/>
               portfolio.ts
             </motion.button>
             <motion.button
@@ -187,9 +195,9 @@ export default memo(function Hero() {
                   ? 'bg-[#161b22] text-cyan-400 border-t-2 border-t-cyan-500'
                   : 'text-[#8b949e] hover:bg-[#161b22]/50 hover:text-white'
               }`}
-              whileHover={{ backgroundColor: 'rgba(22, 27, 34, 0.5)' }}
+              whileHover={{backgroundColor: 'rgba(22, 27, 34, 0.5)'}}
             >
-              <div className="w-2 h-2 rounded bg-cyan-400" />
+              <div className="w-2 h-2 rounded bg-cyan-400"/>
               performance.tsx
             </motion.button>
             <motion.button
@@ -199,20 +207,20 @@ export default memo(function Hero() {
                   ? 'bg-[#161b22] text-cyan-400 border-t-2 border-t-cyan-500'
                   : 'text-[#8b949e] hover:bg-[#161b22]/50 hover:text-white'
               }`}
-              whileHover={{ backgroundColor: 'rgba(22, 27, 34, 0.5)' }}
+              whileHover={{backgroundColor: 'rgba(22, 27, 34, 0.5)'}}
             >
-              <div className="w-2 h-2 rounded bg-[#ff5f56]" />
+              <div className="w-2 h-2 rounded bg-[#ff5f56]"/>
               theme.css
             </motion.button>
           </div>
-
+          
           {/* Code Body */}
           <motion.div
             className="p-4 font-mono text-xs sm:text-sm text-[#c9d1d9] leading-relaxed overflow-x-auto bg-[#161b22]"
             key={activeCodeTab}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            transition={{duration: 0.3}}
           >
             <pre className="whitespace-pre">
               <code>
@@ -220,9 +228,10 @@ export default memo(function Hero() {
               </code>
             </pre>
           </motion.div>
-
+          
           {/* Terminal Footer Indicator */}
-          <div className="bg-[#0d1117] border-t border-[#21262d] px-4 py-1.5 flex justify-between items-center text-[10px] font-mono text-[#8b949e]">
+          <div
+            className="bg-[#0d1117] border-t border-[#21262d] px-4 py-1.5 flex justify-between items-center text-[10px] font-mono text-[#8b949e]">
             <span>UTF-8</span>
             <span className="text-cyan-400">TypeScript React</span>
             <span>Pos 1:1</span>
