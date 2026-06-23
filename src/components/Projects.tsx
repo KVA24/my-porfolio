@@ -65,14 +65,10 @@ const Projects = memo(function Projects({ onSelectProject }: ProjectsProps) {
               key={project.id}
               variants={itemVariants}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className={`group rounded-xl border bg-opacity-40 hover:border-accent transition-all duration-300 overflow-hidden flex flex-col justify-between bg-secondary border-primary ${
-                idx === 0 ? 'lg:row-span-2' : ''
-              }`}
+              className={`group rounded-xl border bg-opacity-40 hover:border-accent transition-all duration-300 overflow-hidden flex flex-col justify-between bg-secondary border-primary h-full lg:row-span-2`}
             >
               {/* Image & tag overlay container */}
-              <div className={`relative overflow-hidden border-b bg-opacity-50 bg-tertiary border-primary ${
-                idx === 0 ? 'aspect-square sm:aspect-auto sm:h-96' : 'aspect-video'
-              }`}>
+              <div className="relative overflow-hidden border-b bg-opacity-50 bg-tertiary border-primary h-64">
                 <motion.img
                   src={project.image}
                   alt={project.title}
