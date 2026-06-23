@@ -40,7 +40,7 @@ export default function PerformanceLab() {
   }, [isOptimized, simulatedElements]);
 
   return (
-    <section id="sandbox" className="py-20 px-4 sm:px-8 border-t transition-colors duration-200 bg-primary border-primary">
+    <section id="performance-lab" className="py-20 px-4 sm:px-8 border-t transition-colors duration-200 bg-primary border-primary">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 animate-fade-in">
           <p className="font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2 text-secondary">

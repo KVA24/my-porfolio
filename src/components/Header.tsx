@@ -36,7 +36,7 @@ export default function Header({ lang, setLang, onOpenResume }: HeaderProps) {
           <a href="#skills" className="hover:text-accent transition-colors uppercase tracking-wider text-xs">
             {t('nav.skills')}
           </a>
-          <a href="#sandbox" className="hover:text-accent transition-colors uppercase tracking-wider text-xs">
+          <a href="#performance-lab" className="hover:text-accent transition-colors uppercase tracking-wider text-xs">
             Sandbox Dev Lab
           </a>
           <a href="#projects" className="hover:text-accent transition-colors uppercase tracking-wider text-xs">
@@ -53,8 +53,8 @@ export default function Header({ lang, setLang, onOpenResume }: HeaderProps) {
           <button
             onClick={toggleTheme}
             className="bg-secondary hover:bg-primary border border-primary text-strong rounded-lg p-2 transition-colors cursor-pointer flex items-center justify-center"
-            title={`Switch to ${'dark'} mode`}
-            aria-label={`Switch to ${'dark'} mode`}
+            aria-label="Toggle light and dark mode"
+            title="Toggle theme"
           >
             <span className="hidden dark:inline-block">
               <Sun size={16} className="text-yellow-400" />
@@ -73,6 +73,8 @@ export default function Header({ lang, setLang, onOpenResume }: HeaderProps) {
                   ? 'lang-btn-active'
                   : 'lang-btn-inactive'
               }`}
+              aria-label="Switch to Vietnamese language"
+              aria-pressed={lang === 'vi'}
             >
               VN
             </button>
@@ -83,6 +85,8 @@ export default function Header({ lang, setLang, onOpenResume }: HeaderProps) {
                   ? 'lang-btn-active'
                   : 'lang-btn-inactive'
               }`}
+              aria-label="Switch to English language"
+              aria-pressed={lang === 'en'}
             >
               EN
             </button>
@@ -92,6 +96,7 @@ export default function Header({ lang, setLang, onOpenResume }: HeaderProps) {
           <button
             onClick={onOpenResume}
             className="bg-primary hover:bg-secondary text-strong py-1.5 px-3.5 sm:px-4 rounded-lg text-xs font-semibold border border-primary transition-colors flex items-center gap-2 cursor-pointer btn-secondary"
+            aria-label="Open professional resume"
           >
             <FileText size={14} className="text-accent" />
             <span>{t('resume.button')}</span>

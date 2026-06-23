@@ -131,10 +131,10 @@ export default function Contact({ lang }: ContactProps) {
 
             {/* Social Channels links */}
             <div className="pt-6 border-t border-secondary flex items-center gap-3">
-              <a href="#" className="h-10 w-10 rounded-lg border flex items-center justify-center transition-colors bg-secondary text-secondary border-secondary hover:bg-secondary">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="h-10 w-10 rounded-lg border flex items-center justify-center transition-colors bg-secondary text-secondary border-secondary hover:bg-accent hover:text-strong cursor-pointer" title="GitHub">
                 <Github size={18} />
               </a>
-              <a href="#" className="h-10 w-10 rounded-lg border flex items-center justify-center transition-colors bg-secondary text-secondary border-secondary hover:bg-secondary">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="h-10 w-10 rounded-lg border flex items-center justify-center transition-colors bg-secondary text-secondary border-secondary hover:bg-accent hover:text-strong cursor-pointer" title="LinkedIn">
                 <Linkedin size={18} />
               </a>
             </div>

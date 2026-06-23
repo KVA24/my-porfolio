@@ -8,6 +8,7 @@ import { ChevronRight, Eye } from 'lucide-react';
 import { PROJECTS, TESTIMONIALS } from '../data';
 import { Project } from '../types';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'motion/react';
 
 interface ProjectsProps {
   onSelectProject: (project: Project) => void;
@@ -16,37 +17,80 @@ interface ProjectsProps {
 export default function Projects({ onSelectProject }: ProjectsProps) {
   const { t } = useTranslation();
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' },
+    },
+  };
+
   return (
     <section id="projects" className="py-20 px-4 sm:px-8 grid-bg bg-primary border-t border-primary">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 animate-fade-in">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: '0px 0px -100px 0px' }}
+        >
           <p className="text-xs font-bold uppercase tracking-widest text-accent">{t('projects.subtitle')}</p>
           <h2 className="text-3xl sm:text-4xl font-extrabold mt-1 text-strong">{t('projects.title')}</h2>
           <div className="w-16 h-1 rounded mx-auto mt-3 bg-accent"></div>
-        </div>
+        </motion.div>
 
-        {/* Bento-grid style layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-6">
-          {PROJECTS.map((project) => (
-            <div
+        {/* Bento-grid style layout with asymmetry: first project is featured (taller) */}
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-6 auto-rows-max"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '0px 0px -100px 0px' }}
+        >
+          {PROJECTS.map((project, idx) => (
+            <motion.div
               key={project.id}
-              className="group rounded-xl border bg-opacity-40 hover:border-accent transition-all duration-300 overflow-hidden flex flex-col justify-between bg-secondary border-primary"
+              variants={itemVariants}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className={`group rounded-xl border bg-opacity-40 hover:border-accent transition-all duration-300 overflow-hidden flex flex-col justify-between bg-secondary border-primary ${
+                idx === 0 ? 'lg:row-span-2' : ''
+              }`}
             >
               {/* Image & tag overlay container */}
-              <div className="relative aspect-video overflow-hidden border-b bg-opacity-50 bg-tertiary border-primary">
-                <img
+              <div className={`relative overflow-hidden border-b bg-opacity-50 bg-tertiary border-primary ${
+                idx === 0 ? 'aspect-square sm:aspect-auto sm:h-96' : 'aspect-video'
+              }`}>
+                <motion.img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
+                  className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.5 }}
                 />
                 <div className="absolute inset-0 bg-linear-to-t via-opacity-20 to-transparent from-tertiary" />
 
                 {/* Tags overlay */}
                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-                  <span className="text-xs font-bold px-2.5 py-1 rounded bg-accent text-[#0d1117]">
+                  <motion.span
+                    whileHover={{ scale: 1.1 }}
+                    className="text-xs font-bold px-2.5 py-1 rounded bg-accent text-[#0d1117]"
+                  >
                     {project.category}
-                  </span>
+                  </motion.span>
                   <div className="flex gap-2">
                     {project.tags.map(tag => (
                       <span key={tag} className="text-[10px] font-medium tracking-wide px-2 py-0.5 rounded backdrop-blur bg-black/60 text-white">
@@ -60,65 +104,62 @@ export default function Projects({ onSelectProject }: ProjectsProps) {
               {/* Content text */}
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-extrabold mb-3 group-hover:transition-colors text-strong group-hover:text-accent">
+                  <motion.h3
+                    whileHover={{ color: '#38bdf8' }}
+                    className="text-xl sm:text-2xl font-extrabold mb-3 group-hover:transition-colors text-strong"
+                  >
                     {project.title}
-                  </h3>
+                  </motion.h3>
                   <p className="text-xs leading-relaxed mb-4 text-secondary">
                     {project.description}
                   </p>
 
                   {/* Integrated technology tags inline */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
+                  <motion.div
+                    className="flex flex-wrap gap-1.5 mb-6"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
                     {project.tech.map(techName => (
-                      <span key={techName} className="font-mono text-[11px] border px-2 py-0.5 rounded bg-tertiary text-primary border-primary">
+                      <motion.span
+                        key={techName}
+                        variants={itemVariants}
+                        whileHover={{ scale: 1.05 }}
+                        className="font-mono text-[11px] border px-2 py-0.5 rounded bg-tertiary text-primary border-primary"
+                      >
                         {techName}
-                      </span>
+                      </motion.span>
                     ))}
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Buttons Action bar */}
                 <div className="flex items-center gap-3 pt-4 border-t border-primary">
-                  <button
+                  <motion.button
                     onClick={() => onSelectProject(project)}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
                     className="flex-1 py-2 px-4 rounded-lg font-bold text-xs border flex items-center justify-center gap-1.5 cursor-pointer leading-7 transition-all btn-secondary"
                   >
                     <span>{t('projects.detailsBtn')}</span>
                     <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </motion.button>
 
-                  <a
+                  <motion.a
                     href={project.demoUrl}
                     onClick={(e) => { e.preventDefault(); alert("Interactive client prototype live inside AI Studio sandbox!"); }}
+                    whileHover={{ scale: 1.05 }}
                     className="py-2 px-3 rounded-lg border font-bold text-xs flex items-center justify-center gap-1 cursor-pointer leading-7 transition-all bg-transparent text-accent border-accent/30 hover:bg-accent/10"
                   >
                     <Eye size={13} />
                     <span className="hidden sm:inline">Demo</span>
-                  </a>
+                  </motion.a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-
-        {/* Testimonies inside the project frame to display feedback on products */}
-        {/*<div className="mt-16 pt-12 border-t border-[#21262d]/70 grid grid-cols-1 md:grid-cols-2 gap-6">*/}
-        {/*  {TESTIMONIALS.map(tData => (*/}
-        {/*    <div key={tData.id} className="p-6 rounded-xl border border-[#21262d] bg-[#161b22]/50 relative">*/}
-        {/*      <QuoteIcon className="absolute top-4 right-4 h-8 w-8 text-[#21262d]" />*/}
-        {/*      <p className="text-sm text-[#8b949e] italic leading-relaxed mb-6">{tData.text}</p>*/}
-        {/*      <div className="flex items-center gap-4">*/}
-        {/*        <div className="h-10 w-10 rounded-full overflow-hidden border border-[#30363d] bg-slate-800">*/}
-        {/*          <img src={tData.avatar} alt={tData.name} className="w-full h-full object-cover" />*/}
-        {/*        </div>*/}
-        {/*        <div>*/}
-        {/*          <h5 className="text-white font-bold text-xs">{tData.name}</h5>*/}
-        {/*          <p className="text-[10px] text-[#8b949e] mt-0.5">{tData.role} @ {tData.company}</p>*/}
-        {/*        </div>*/}
-        {/*      </div>*/}
-        {/*    </div>*/}
-        {/*  ))}*/}
-        {/*</div>*/}
+        </motion.div>
       </div>
     </section>
   );
