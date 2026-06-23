@@ -53,8 +53,8 @@ export default function Header({ lang, setLang, onOpenResume }: HeaderProps) {
           <button
             onClick={toggleTheme}
             className="bg-secondary hover:bg-primary border border-primary text-strong rounded-lg p-2 transition-colors cursor-pointer flex items-center justify-center"
-            title={`Switch to ${false ? 'light' : 'dark'} mode`}
-            aria-label={`Switch to ${false ? 'light' : 'dark'} mode`}
+            title={`Switch to ${'dark'} mode`}
+            aria-label={`Switch to ${'dark'} mode`}
           >
             <span className="hidden dark:inline-block">
               <Sun size={16} className="text-yellow-400" />
