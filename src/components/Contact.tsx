@@ -55,29 +55,44 @@ const Contact = memo(function Contact({lang}: ContactProps) {
     }
   };
   
-  const handleContactSubmit = (e: FormEvent) => {
+  const handleContactSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
     
     setIsSending(true);
     setFormSuccess(false);
     
-    setTimeout(() => {
-      const newMsg: ContactMessage = {
-        id: Math.random().toString(36).substr(2, 9),
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-        timestamp: new Date().toLocaleTimeString(i18n.language === 'vi' ? 'vi-VN' : 'en-US', {
-          hour: '2-digit', minute: '2-digit', second: '2-digit'
-        })
-      };
+    const newMsg: ContactMessage = {
+      id: Math.random().toString(36).substr(2, 9),
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      timestamp: new Date().toLocaleTimeString(i18n.language === 'vi' ? 'vi-VN' : 'en-US', {
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+      })
+    };
+    
+    try {
+      const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+      const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
       
-      saveMessage(newMsg);
-      setIsSending(false);
-      setFormSuccess(true);
-      setFormData({name: '', email: '', message: ''});
-    }, 900);
+      if (botToken && chatId) {
+        const text = `📬 *New Portfolio Enquiry*%0A%0A` +
+          `👤 *Name:* ${encodeURIComponent(formData.name)}%0A` +
+          `📧 *Email:* ${encodeURIComponent(formData.email)}%0A` +
+          `💬 *Message:* ${encodeURIComponent(formData.message)}%0A%0A` +
+          `⏰ *Time:* ${newMsg.timestamp}`;
+        
+        await fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${text}&parse_mode=Markdown`);
+      }
+    } catch (error) {
+      console.error('Failed to send to Telegram:', error);
+    }
+    
+    saveMessage(newMsg);
+    setIsSending(false);
+    setFormSuccess(true);
+    setFormData({name: '', email: '', message: ''});
   };
   
   return (
