@@ -12,9 +12,9 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     icon: 'Layers',
     skills: [
       'React 18/19',
-      'Next.js (App Router)',
+      'Next.js',
       'TypeScript',
-      'Zustand / Redux Toolkit',
+      'Zustand / Mobx',
       'Tailwind CSS',
       'Three.js (R3F)',
       'HTML5/CSS3 Semantic',

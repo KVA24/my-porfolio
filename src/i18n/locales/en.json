@@ -69,6 +69,11 @@
       "success": "Thank you! Your message has been acquired successfully. Khiên Nguyễn will reply within the next 24 hours.",
       "error": "Something went wrong. Please try again later."
     },
+    "placeHolder": {
+      "name": "Your name",
+      "email": "Your email",
+      "note": "Idea, questions,..."
+    },
     "info": {
       "email": "Direct Corporate Email",
       "phone": "Cellular Line",

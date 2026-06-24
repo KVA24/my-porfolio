@@ -164,7 +164,7 @@ const Contact = memo(function Contact({lang}: ContactProps) {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      placeholder="Nguyễn Văn A"
+                      placeholder={t('contact.placeHolder.name')}
                       className="input-field w-full rounded-lg px-4 py-2.5 text-sm focus:outline-none transition-colors"
                     />
                   </div>
@@ -177,7 +177,7 @@ const Contact = memo(function Contact({lang}: ContactProps) {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      placeholder="a@example.com"
+                      placeholder={t('contact.placeHolder.email')}
                       className="input-field w-full rounded-lg px-4 py-2.5 text-sm focus:outline-none transition-colors"
                     />
                   </div>
@@ -192,7 +192,7 @@ const Contact = memo(function Contact({lang}: ContactProps) {
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    placeholder="Ý tưởng dự án, thắc mắc chi tiết..."
+                    placeholder={t('contact.placeHolder.note')}
                     className="input-field w-full rounded-lg p-4 text-sm focus:outline-none transition-colors resize-none"
                   />
                 </div>

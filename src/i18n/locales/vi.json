@@ -69,6 +69,11 @@
       "success": "Cảm ơn bạn! Yêu cầu của bạn đã được tiếp nhận thành công. Khiên Nguyễn sẽ liên hệ lại trong vòng 24 giờ tới.",
       "error": "Có lỗi xảy ra, vui lòng thử lại sau giây lát."
     },
+    "placeHolder": {
+      "name": "Điền tên",
+      "email": "Điền email",
+      "note": "Ý tưởng dự án, thắc mắc chi tiết..."
+    },
     "info": {
       "email": "Email trực tiếp",
       "phone": "Điện thoại di động",
