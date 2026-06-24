@@ -76,6 +76,9 @@ const Contact = memo(function Contact({lang}: ContactProps) {
       const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
       const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
       
+      console.log(botToken);
+      console.log(chatId);
+      
       if (botToken && chatId) {
         const text = `📬 *New Portfolio Enquiry*%0A%0A` +
           `👤 *Name:* ${encodeURIComponent(formData.name)}%0A` +
