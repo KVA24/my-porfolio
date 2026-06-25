@@ -69,10 +69,11 @@ const PerformanceLab = memo(function PerformanceLab() {
               {/* Elements count slider */}
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-secondary">Simulated DOM Elements</span>
+                  <label htmlFor="simulated-elements" className="text-secondary">Simulated DOM Elements</label>
                   <span className="font-mono font-bold text-accent">{simulatedElements} elements</span>
                 </div>
                 <input
+                  id="simulated-elements"
                   type="range"
                   min="10"
                   max="500"
@@ -98,6 +99,7 @@ const PerformanceLab = memo(function PerformanceLab() {
                   <label className="relative inline-flex items-center cursor-pointer select-none">
                     <input
                       type="checkbox"
+                      aria-label="Toggle React memo and useMemo optimization"
                       checked={isOptimized}
                       onChange={() => setIsOptimized(!isOptimized)}
                       className="sr-only peer"
@@ -128,6 +130,7 @@ const PerformanceLab = memo(function PerformanceLab() {
             {/* Action Button */}
             <div className="pt-6 border-t mt-6 lg:mt-0 border-secondary">
               <button
+                type="button"
                 onClick={triggerBenchmark}
                 disabled={isBenchmarking}
                 className="w-full font-bold py-2.5 px-4 rounded-lg border transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer text-xs uppercase btn-secondary"

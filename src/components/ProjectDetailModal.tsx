@@ -4,7 +4,7 @@
  */
 
 import {Settings, X} from 'lucide-react';
-import {AnimatePresence, motion} from 'motion/react';
+import {AnimatePresence, m} from 'motion/react';
 import {Project} from '../types';
 import {useTranslation} from 'react-i18next';
 import {memo} from 'react';
@@ -21,7 +21,7 @@ const ProjectDetailModal = memo(function ProjectDetailModal({project, onClose}: 
       {project && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop */}
-          <motion.div
+          <m.div
             initial={{opacity: 0}}
             animate={{opacity: 1}}
             exit={{opacity: 0}}
@@ -30,7 +30,7 @@ const ProjectDetailModal = memo(function ProjectDetailModal({project, onClose}: 
           />
           
           {/* Modal Body */}
-          <motion.div
+          <m.div
             initial={{scale: 0.95, y: 20, opacity: 0}}
             animate={{scale: 1, y: 0, opacity: 1}}
             exit={{scale: 0.95, y: 20, opacity: 0}}
@@ -44,6 +44,7 @@ const ProjectDetailModal = memo(function ProjectDetailModal({project, onClose}: 
                   className="text-xs font-mono text-accent font-bold uppercase tracking-widest">Architectural Spec</span>
               </div>
               <button
+                type="button"
                 onClick={onClose}
                 className="p-1 rounded-lg hover:bg-primary text-secondary hover:text-strong cursor-pointer"
               >
@@ -108,13 +109,14 @@ const ProjectDetailModal = memo(function ProjectDetailModal({project, onClose}: 
             {/* Action Buttons inside specs */}
             <div className="p-4 bg-tertiary border-t border-primary flex justify-end gap-3">
               <button
+                type="button"
                 onClick={onClose}
                 className="bg-secondary hover:bg-primary text-strong py-1.5 px-4 rounded-lg font-bold text-xs border border-primary cursor-pointer"
               >
                 {t('projects.closeBtn')}
               </button>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       )}
     </AnimatePresence>

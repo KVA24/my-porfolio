@@ -5,6 +5,7 @@
 
 import {useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import {LazyMotion, domAnimation} from 'motion/react';
 import {Project} from './types';
 
 // Theme Provider
@@ -94,7 +95,9 @@ function AppContent() {
 export default function App() {
   return (
     <ThemeProvider>
-      <AppContent/>
+      <LazyMotion features={domAnimation}>
+        <AppContent/>
+      </LazyMotion>
     </ThemeProvider>
   );
 }

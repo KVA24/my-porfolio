@@ -4,7 +4,7 @@
  */
 
 import {Award, BookOpen, Briefcase, Download, Mail, MapPin, Phone, User, X} from 'lucide-react';
-import {AnimatePresence, motion} from 'motion/react';
+import {AnimatePresence, m} from 'motion/react';
 import {useTranslation} from 'react-i18next';
 import {memo} from 'react';
 
@@ -20,7 +20,7 @@ const ResumeModal = memo(function ResumeModal({isOpen, onClose}: ResumeModalProp
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop */}
-          <motion.div
+          <m.div
             initial={{opacity: 0}}
             animate={{opacity: 1}}
             exit={{opacity: 0}}
@@ -29,7 +29,7 @@ const ResumeModal = memo(function ResumeModal({isOpen, onClose}: ResumeModalProp
           />
           
           {/* Resume Sheet Body */}
-          <motion.div
+          <m.div
             initial={{scale: 0.95, y: 30, opacity: 0}}
             animate={{scale: 1, y: 0, opacity: 1}}
             exit={{scale: 0.95, y: 30, opacity: 0}}
@@ -45,6 +45,7 @@ const ResumeModal = memo(function ResumeModal({isOpen, onClose}: ResumeModalProp
                 </div>
               </div>
               <button
+                type="button"
                 onClick={onClose}
                 className="p-1.5 rounded-lg hover:bg-primary text-secondary hover:text-strong cursor-pointer"
               >
@@ -200,6 +201,7 @@ const ResumeModal = memo(function ResumeModal({isOpen, onClose}: ResumeModalProp
               </span>
               <div className="flex gap-2">
                 <button
+                  type="button"
                   onClick={() => {
                     window.print();
                   }}
@@ -209,6 +211,7 @@ const ResumeModal = memo(function ResumeModal({isOpen, onClose}: ResumeModalProp
                   <span>{t('resume.download')}</span>
                 </button>
                 <button
+                  type="button"
                   onClick={onClose}
                   className="bg-accent hover:bg-accent/80 text-[#0d1117] py-1.5 px-4 rounded font-extrabold text-xs cursor-pointer h-9"
                 >
@@ -216,7 +219,7 @@ const ResumeModal = memo(function ResumeModal({isOpen, onClose}: ResumeModalProp
                 </button>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       )}
     </AnimatePresence>

@@ -5,39 +5,40 @@
 
 import {memo, useState} from 'react';
 import {CheckCircle, ChevronRight, Code, Cpu, Layers} from 'lucide-react';
-import {motion} from 'motion/react';
+import {m} from 'motion/react';
+import type {Variants} from 'motion/react';
 import {SKILL_CATEGORIES} from '../data';
 import {useTranslation} from 'react-i18next';
+
+const containerVariants = {
+  hidden: {opacity: 0},
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    },
+  },
+} satisfies Variants;
+
+const itemVariants = {
+  hidden: {opacity: 0, y: 15},
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {duration: 0.5, ease: 'easeOut'},
+  },
+} satisfies Variants;
 
 const Skills = memo(function Skills() {
   const {t} = useTranslation();
   const [selectedSkillCategory, setSelectedSkillCategory] = useState<string>('frontend');
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   
-  const containerVariants = {
-    hidden: {opacity: 0},
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.1,
-      },
-    },
-  };
-  
-  const itemVariants = {
-    hidden: {opacity: 0, y: 15},
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {duration: 0.5, ease: 'easeOut'},
-    },
-  };
-  
   return (
     <section id="skills" className="py-20 px-4 sm:px-8 border-t bg-primary border-primary">
       <div className="max-w-7xl mx-auto">
-        <motion.div
+        <m.div
           className="text-center mb-12"
           initial={{opacity: 0, y: -20}}
           whileInView={{opacity: 1, y: 0}}
@@ -49,11 +50,11 @@ const Skills = memo(function Skills() {
           <p className="text-sm mt-3.5 max-w-md mx-auto text-secondary">
             {t('skills.clickHint')}
           </p>
-        </motion.div>
+        </m.div>
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Category selection */}
-          <motion.div
+          <m.div
             className="lg:col-span-5 flex flex-col gap-4"
             variants={containerVariants}
             initial="hidden"
@@ -63,7 +64,7 @@ const Skills = memo(function Skills() {
             {SKILL_CATEGORIES.map((cat) => {
               const isSelected = selectedSkillCategory === cat.id;
               return (
-                <motion.button
+                <m.button
                   key={cat.id}
                   onClick={() => setSelectedSkillCategory(cat.id)}
                   variants={itemVariants}
@@ -92,12 +93,12 @@ const Skills = memo(function Skills() {
                       </p>
                     </div>
                   </div>
-                </motion.button>
+                </m.button>
               );
             })}
             
             {/* Dynamic Tech Highlight Counter Widget */}
-            <motion.div
+            <m.div
               variants={itemVariants}
               whileHover={{scale: 1.02}}
               className="p-6 rounded-xl border flex items-center justify-between bg-secondary border-primary"
@@ -106,17 +107,17 @@ const Skills = memo(function Skills() {
                 <div className="text-xs font-mono uppercase tracking-widest text-accent">Lighthouse Audits</div>
                 <div className="text-xl font-extrabold mt-1 text-strong">SEO & Performance</div>
               </div>
-              <motion.div
+              <m.div
                 className="h-14 w-14 rounded-full border-4 flex items-center justify-center border-accent bg-accent/10"
                 whileHover={{scale: 1.1}}
               >
                 <span className="font-extrabold text-sm text-accent">100%</span>
-              </motion.div>
-            </motion.div>
-          </motion.div>
+              </m.div>
+            </m.div>
+          </m.div>
           
           {/* List of skills for selected category */}
-          <motion.div
+          <m.div
             className="lg:col-span-7 rounded-xl border p-6 sm:p-8 relative bg-secondary border-primary"
             initial={{opacity: 0, x: 20}}
             whileInView={{opacity: 1, x: 0}}
@@ -131,14 +132,14 @@ const Skills = memo(function Skills() {
               </span>
             </h4>
             
-            <motion.div
+            <m.div
               className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
               {SKILL_CATEGORIES.find(c => c.id === selectedSkillCategory)?.skills.map((skill) => (
-                <motion.div
+                <m.div
                   key={skill}
                   onMouseEnter={() => setHoveredSkill(skill)}
                   onMouseLeave={() => setHoveredSkill(null)}
@@ -159,10 +160,10 @@ const Skills = memo(function Skills() {
                   
                   <ChevronRight size={14}
                                 className={`opacity-0 group-hover:opacity-100 transition-opacity text-secondary`}/>
-                </motion.div>
+                </m.div>
               ))}
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </div>
     </section>

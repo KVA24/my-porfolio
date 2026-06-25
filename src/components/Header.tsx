@@ -53,6 +53,7 @@ const Header = memo(function Header({lang, setLang, onOpenResume}: HeaderProps) 
         <div className="flex items-center gap-4">
           {/* Theme toggle */}
           <button
+            type="button"
             onClick={toggleTheme}
             className="bg-secondary hover:bg-primary border border-primary text-strong rounded-lg p-2 transition-colors cursor-pointer flex items-center justify-center"
             aria-label="Toggle light and dark mode"
@@ -69,6 +70,7 @@ const Header = memo(function Header({lang, setLang, onOpenResume}: HeaderProps) 
           {/* Lang switcher */}
           <div className="lang-btn-container flex items-center rounded-lg p-0.5">
             <button
+              type="button"
               onClick={() => setLang('vi')}
               className={`px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
                 lang === 'vi'
@@ -81,6 +83,7 @@ const Header = memo(function Header({lang, setLang, onOpenResume}: HeaderProps) 
               VN
             </button>
             <button
+              type="button"
               onClick={() => setLang('en')}
               className={`px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
                 lang === 'en'
@@ -96,6 +99,7 @@ const Header = memo(function Header({lang, setLang, onOpenResume}: HeaderProps) 
           
           {/* Resume button */}
           <button
+            type="button"
             onClick={onOpenResume}
             className="bg-primary hover:bg-secondary text-strong py-1.5 px-3.5 sm:px-4 rounded-lg text-xs font-semibold border border-primary transition-colors flex items-center gap-2 cursor-pointer btn-secondary"
             aria-label="Open professional resume"

@@ -3,14 +3,32 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import {FormEvent, memo, useEffect, useState} from 'react';
+import {FormEvent, memo, useState} from 'react';
 import {CheckCircle, Github, Linkedin, Mail, MapPin, MessageSquare, Phone, RefreshCw, Send, X} from 'lucide-react';
-import {AnimatePresence, motion} from 'motion/react';
+import {AnimatePresence, m} from 'motion/react';
 import {ContactMessage, Language} from '../types';
 import {useTranslation} from 'react-i18next';
 
 interface ContactProps {
   lang: Language;
+}
+
+const ENQUIRIES_STORAGE_KEY = 'anhtu_portfolio_enquiries:v1';
+const LEGACY_ENQUIRIES_STORAGE_KEY = 'anhtu_portfolio_enquiries';
+
+function getInitialLocalMessages(): ContactMessage[] {
+  if (typeof window === 'undefined') {
+    return [];
+  }
+
+  try {
+    const saved = window.localStorage.getItem(ENQUIRIES_STORAGE_KEY);
+    window.localStorage.removeItem(LEGACY_ENQUIRIES_STORAGE_KEY);
+    return saved ? JSON.parse(saved) : [];
+  } catch (e) {
+    console.error('Failed reading dynamic local messages:', e);
+    return [];
+  }
 }
 
 const Contact = memo(function Contact({lang}: ContactProps) {
@@ -21,25 +39,13 @@ const Contact = memo(function Contact({lang}: ContactProps) {
   const [formSuccess, setFormSuccess] = useState(false);
   
   // Local inbox records (saved in localStorage for persistence)
-  const [localMessages, setLocalMessages] = useState<ContactMessage[]>([]);
-  
-  // Load local messages from localStorage
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('anhtu_portfolio_enquiries');
-      if (saved) {
-        setLocalMessages(JSON.parse(saved));
-      }
-    } catch (e) {
-      console.error('Failed reading dynamic local messages:', e);
-    }
-  }, []);
+  const [localMessages, setLocalMessages] = useState<ContactMessage[]>(getInitialLocalMessages);
   
   const saveMessage = (msg: ContactMessage) => {
     const updated = [msg, ...localMessages];
     setLocalMessages(updated);
     try {
-      localStorage.setItem('anhtu_portfolio_enquiries', JSON.stringify(updated));
+      localStorage.setItem(ENQUIRIES_STORAGE_KEY, JSON.stringify(updated));
     } catch (e) {
       console.error('Failed writing enquiries:', e);
     }
@@ -49,7 +55,7 @@ const Contact = memo(function Contact({lang}: ContactProps) {
     const filtered = localMessages.filter(m => m.id !== id);
     setLocalMessages(filtered);
     try {
-      localStorage.setItem('anhtu_portfolio_enquiries', JSON.stringify(filtered));
+      localStorage.setItem(ENQUIRIES_STORAGE_KEY, JSON.stringify(filtered));
     } catch (e) {
       console.error('Failed deleting enquiry:', e);
     }
@@ -157,11 +163,13 @@ const Contact = memo(function Contact({lang}: ContactProps) {
             <div className="pt-6 border-t border-secondary flex items-center gap-3">
               <a href="https://github.com" target="_blank" rel="noopener noreferrer"
                  className="h-10 w-10 rounded-lg border flex items-center justify-center transition-colors bg-secondary text-secondary border-secondary hover:bg-accent hover:text-strong cursor-pointer"
+                 aria-label="Open GitHub profile"
                  title="GitHub">
                 <Github size={18}/>
               </a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
                  className="h-10 w-10 rounded-lg border flex items-center justify-center transition-colors bg-secondary text-secondary border-secondary hover:bg-accent hover:text-strong cursor-pointer"
+                 aria-label="Open LinkedIn profile"
                  title="LinkedIn">
                 <Linkedin size={18}/>
               </a>
@@ -174,10 +182,11 @@ const Contact = memo(function Contact({lang}: ContactProps) {
               <form onSubmit={handleContactSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold uppercase tracking-wide text-secondary">
+                    <label htmlFor="contact-name" className="text-xs font-bold uppercase tracking-wide text-secondary">
                       {t('contact.form.name')}
                     </label>
                     <input
+                      id="contact-name"
                       type="text"
                       required
                       value={formData.name}
@@ -187,10 +196,11 @@ const Contact = memo(function Contact({lang}: ContactProps) {
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold uppercase tracking-wide text-secondary">
+                    <label htmlFor="contact-email" className="text-xs font-bold uppercase tracking-wide text-secondary">
                       {t('contact.form.email')}
                     </label>
                     <input
+                      id="contact-email"
                       type="email"
                       required
                       value={formData.email}
@@ -202,10 +212,11 @@ const Contact = memo(function Contact({lang}: ContactProps) {
                 </div>
                 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold uppercase tracking-wide text-secondary">
+                  <label htmlFor="contact-message" className="text-xs font-bold uppercase tracking-wide text-secondary">
                     {t('contact.form.message')}
                   </label>
                   <textarea
+                    id="contact-message"
                     required
                     rows={4}
                     value={formData.message}
@@ -218,7 +229,7 @@ const Contact = memo(function Contact({lang}: ContactProps) {
                 {/* Message states feedback banner */}
                 <AnimatePresence>
                   {formSuccess && (
-                    <motion.div
+                    <m.div
                       initial={{opacity: 0, height: 0}}
                       animate={{opacity: 1, height: 'auto'}}
                       exit={{opacity: 0, height: 0}}
@@ -226,7 +237,7 @@ const Contact = memo(function Contact({lang}: ContactProps) {
                     >
                       <CheckCircle size={14}/>
                       <span>{t('contact.form.success')}</span>
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
                 
@@ -278,8 +289,10 @@ const Contact = memo(function Contact({lang}: ContactProps) {
                         <p className="line-clamp-2 italic text-secondary">&ldquo;{msg.message}&rdquo;</p>
                       </div>
                       <button
+                        type="button"
                         onClick={() => deleteMessage(msg.id)}
                         className="opacity-0 group-hover:opacity-100 transition-opacity p-1 cursor-pointer text-secondary hover:text-red-400"
+                        aria-label={`Delete message from ${msg.name}`}
                         title="Hủy tin nhắn"
                       >
                         <X size={13}/>
