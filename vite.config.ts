@@ -1,11 +1,51 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
+import {defineConfig, Plugin} from 'vite';
+import telegramHandler from './api/telegram';
+
+function telegramDevServerPlugin(): Plugin {
+  return {
+    name: 'telegram-api-dev-server',
+    configureServer(server) {
+      server.middlewares.use('/api/telegram', async (req, res) => {
+        let rawBody = '';
+
+        for await (const chunk of req) {
+          rawBody += chunk;
+        }
+
+        let body: unknown = {};
+
+        try {
+          body = rawBody ? JSON.parse(rawBody) : {};
+        } catch {
+          res.statusCode = 400;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({error: 'Invalid JSON body'}));
+          return;
+        }
+
+        await telegramHandler(
+          {method: req.method, body},
+          {
+            status: (code: number) => ({
+              json: (responseBody: unknown) => {
+                res.statusCode = code;
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify(responseBody));
+              },
+            }),
+          },
+        );
+      });
+    },
+  };
+}
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), telegramDevServerPlugin()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

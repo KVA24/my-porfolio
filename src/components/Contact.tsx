@@ -79,25 +79,24 @@ const Contact = memo(function Contact({lang}: ContactProps) {
     };
     
     try {
-      const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-      const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
-      
-      console.log(botToken);
-      console.log(chatId);
-      
-      if (botToken && chatId) {
-        const text = `📬 *New Portfolio Enquiry*%0A%0A` +
-          `👤 *Name:* ${encodeURIComponent(formData.name)}%0A` +
-          `📧 *Email:* ${encodeURIComponent(formData.email)}%0A` +
-          `💬 *Message:* ${encodeURIComponent(formData.message)}%0A%0A` +
-          `⏰ *Time:* ${newMsg.timestamp}`;
-        
-        await fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${text}&parse_mode=Markdown`);
+      const response = await fetch('/api/telegram', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          name: newMsg.name,
+          email: newMsg.email,
+          message: newMsg.message,
+          timestamp: newMsg.timestamp,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Telegram notification failed with status ${response.status}`);
       }
     } catch (error) {
       console.error('Failed to send to Telegram:', error);
     }
-    
+
     saveMessage(newMsg);
     setIsSending(false);
     setFormSuccess(true);

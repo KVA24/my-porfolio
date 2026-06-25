@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import {Project, SkillCategory, Testimonial} from './types';
+import {Project, SkillCategory} from './types';
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
@@ -87,24 +87,5 @@ export const PROJECTS: Project[] = [
     },
     demoUrl: '#',
     githubUrl: '#'
-  }
-];
-
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    id: 't1',
-    name: 'Hoàng Minh',
-    role: 'Technical Lead',
-    company: 'FinTech Hub Vietnam',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80',
-    text: 'Khiên Nguyễn sở hữu thói quen kỹ thuật tỉ mỉ hiếm có. Cậu ấy không chỉ viết code hoạt động được, mà làm cho nó hoạt động ở độ mượt tối ưu và rất dễ định hình phát triển tiếp.'
-  },
-  {
-    id: 't2',
-    name: 'Sophia Carter',
-    role: 'Creative Director',
-    company: 'Aura Studio SG',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80',
-    text: 'A profound UI engineering partner! Khien Nguyen bridging creative designs & complex functional logic flawlessly, making our high-end 3D product catalog look world-class.'
   }
 ];

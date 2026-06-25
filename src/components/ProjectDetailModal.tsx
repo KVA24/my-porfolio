@@ -80,8 +80,8 @@ const ProjectDetailModal = memo(function ProjectDetailModal({project, onClose}: 
                 <h4
                   className="text-strong font-extrabold text-xs uppercase tracking-wider text-[#58a6ff]">{t('projects.metrics')}</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {project.details.metrics.map((metric, index) => (
-                    <div key={index}
+                  {project.details.metrics.map((metric) => (
+                    <div key={`${project.id}-metric-${metric}`}
                          className="p-3 rounded-lg bg-tertiary border border-primary text-xs text-strong font-semibold flex items-start gap-2">
                       <span className="text-emerald-400 font-bold">✔</span>
                       <span>{metric}</span>
@@ -97,7 +97,7 @@ const ProjectDetailModal = memo(function ProjectDetailModal({project, onClose}: 
                 <div
                   className="bg-tertiary p-4 rounded-lg border border-primary space-y-3 font-mono text-xs text-secondary">
                   {project.details.architecture.map((archLine, idx) => (
-                    <div key={idx} className="flex gap-2.5 items-start">
+                    <div key={`${project.id}-architecture-${archLine}`} className="flex gap-2.5 items-start">
                       <span className="text-cyan-500 font-bold">[{idx + 1}]</span>
                       <p className="text-primary">{archLine}</p>
                     </div>
