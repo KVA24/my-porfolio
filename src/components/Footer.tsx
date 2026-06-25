@@ -8,6 +8,7 @@ import {memo} from 'react';
 
 const Footer = memo(function Footer() {
   const {t} = useTranslation();
+  const currentYear = new Date().getFullYear();
   
   return (
     <footer
@@ -17,8 +18,8 @@ const Footer = memo(function Footer() {
           <span className="h-2 w-2 rounded-full animate-pulse bg-accent"/>
           <span className="font-bold text-sm text-strong">Khien Nguyen | DevPortfolio v1.0.0</span>
         </div>
-        <p className="text-secondary">
-          &copy; {new Date().getFullYear()} Khien Nguyen. All rights reserved. Powered by React 19 & Tailwind.
+        <p className="text-secondary" suppressHydrationWarning>
+          &copy; {currentYear} Khien Nguyen. All rights reserved. Powered by React 19 & Tailwind.
         </p>
         <div className="flex gap-4">
           <a href="#about" className="transition-colors hover:text-strong">{t('nav.about')}</a>

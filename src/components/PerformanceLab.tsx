@@ -3,41 +3,28 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import {memo, useEffect, useState} from 'react';
+import {memo, useMemo, useState} from 'react';
 import {Activity, RefreshCw, Sliders, Terminal} from 'lucide-react';
 
 const PerformanceLab = memo(function PerformanceLab() {
   // Sandbox state
   const [simulatedElements, setSimulatedElements] = useState<number>(50);
   const [isOptimized, setIsOptimized] = useState<boolean>(true);
-  const [renderStats, setRenderStats] = useState<{ timeMs: number } | null>(null);
-  const [isBenchmarking, setIsBenchmarking] = useState(false);
   const [renderCount, setRenderCount] = useState(0);
+  const renderStats = useMemo(() => {
+    const multiplier = isOptimized ? 0.02 : 1.85;
+    const noise = ((renderCount * 17 + simulatedElements * 13 + (isOptimized ? 3 : 7)) % 15) / 100;
+    const finalTime = parseFloat((simulatedElements * multiplier + noise).toFixed(2));
+
+    return {
+      timeMs: finalTime < 0.1 ? 0.12 : finalTime
+    };
+  }, [isOptimized, renderCount, simulatedElements]);
   
   // Run render latency sandbox benchmark
   const triggerBenchmark = () => {
-    setIsBenchmarking(true);
     setRenderCount(prev => prev + 1);
-    
-    setTimeout(() => {
-      // Simulate real-world React render latency calculations
-      // If optimized: Virtual DOM virtualization makes rendering 2000-5000 items run in 0.8ms - 2.5ms
-      // If unoptimized: Regular DOM diffing of 2000 items runs in 45ms - 220ms depending on style recalculation
-      const multiplier = isOptimized ? 0.02 : 1.85;
-      const noise = Math.random() * 0.15;
-      const finalTime = parseFloat((simulatedElements * multiplier + noise).toFixed(2));
-      
-      setRenderStats({
-        timeMs: finalTime < 0.1 ? 0.12 : finalTime
-      });
-      setIsBenchmarking(false);
-    }, 700);
   };
-  
-  // Trigger default benchmark on state changed
-  useEffect(() => {
-    triggerBenchmark();
-  }, [isOptimized, simulatedElements]);
   
   return (
     <section id="performance-lab"
@@ -132,11 +119,10 @@ const PerformanceLab = memo(function PerformanceLab() {
               <button
                 type="button"
                 onClick={triggerBenchmark}
-                disabled={isBenchmarking}
                 className="w-full font-bold py-2.5 px-4 rounded-lg border transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer text-xs uppercase btn-secondary"
               >
-                <RefreshCw size={14} className={`${isBenchmarking ? 'animate-spin' : ''}`}/>
-                <span>{isBenchmarking ? 'Calculating WebLatencies...' : 'Trigger Tree Re-render'}</span>
+                <RefreshCw size={14}/>
+                <span>Trigger Tree Re-render</span>
               </button>
             </div>
           </div>
@@ -168,7 +154,7 @@ const PerformanceLab = memo(function PerformanceLab() {
                   <span className="text-xs uppercase tracking-wider block text-secondary">Script Call Time</span>
                   <div className="my-3 flex items-baseline gap-2">
                     <span className={`text-4xl font-extrabold ${isOptimized ? 'text-emerald-400' : 'text-amber-500'}`}>
-                      {renderStats ? `${renderStats.timeMs}ms` : '---'}
+                      {`${renderStats.timeMs}ms`}
                     </span>
                     <span className="text-xs text-secondary">per render pass</span>
                   </div>

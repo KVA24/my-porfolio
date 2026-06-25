@@ -116,10 +116,10 @@ export default memo(function Hero() {
                     className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-4">
           <a
             href="#projects"
-            className="px-6 py-3 bg-linear-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-[#0d1117] font-semibold rounded-lg shadow-lg hover:shadow-cyan-500/20 text-sm text-center flex items-center justify-center gap-2 transition-all cursor-pointer"
+            className="group px-6 py-3 bg-linear-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-[#0d1117] font-semibold rounded-lg shadow-lg hover:shadow-cyan-500/20 text-sm text-center flex items-center justify-center gap-2 transition-all cursor-pointer"
           >
             <span>{t('hero.viewProjects')}</span>
-            <ArrowDown size={15} className="animate-bounce"/>
+            <ArrowDown size={15} className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0.5"/>
           </a>
           <a
             href="#contact"
